@@ -88,6 +88,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Controleur.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Joueur.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -97,13 +98,22 @@
     <ClCompile Include="Textbox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Aborigenes.h" />
+    <ClInclude Include="Controleur.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Joueur.h" />
+    <ClInclude Include="PiegeImmobile.h" />
+    <ClInclude Include="PiegeMobile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneNiveau1.h" />
     <ClInclude Include="SceneTitre.h" />
     <ClInclude Include="Testeur.h" />
     <ClInclude Include="Textbox.h" />
+    <ClInclude Include="UsineAborigenes.h" />
+    <ClInclude Include="UsineEnemy.h" />
+    <ClInclude Include="UsinePiegeImmobile.h" />
+    <ClInclude Include="UsinePiegeMobile.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\Backgrounds\Layer0_0.png" />
