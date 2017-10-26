@@ -103,7 +103,6 @@
     <ClInclude Include="SceneNiveau1.h" />
     <ClInclude Include="SceneTitre.h" />
     <ClInclude Include="Testeur.h" />
-    <ClInclude Include="TestPush.h" />
     <ClInclude Include="Textbox.h" />
   </ItemGroup>
   <ItemGroup>
