@@ -88,10 +88,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Aborigenes.cpp" />
     <ClCompile Include="Controleur.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Joueur.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PiegeImmobile.cpp" />
+    <ClCompile Include="PiegeMobile.cpp" />
     <ClCompile Include="SceneNiveau1.cpp" />
     <ClCompile Include="SceneTitre.cpp" />
     <ClCompile Include="Testeur.cpp" />

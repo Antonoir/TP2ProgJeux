@@ -7,6 +7,8 @@ class UsinePiegeImmobile : public UsineEnemy
 public:
 	Enemy* fabriquerEnemy()
 	{
-		return new PiegeImmobile();
+		Enemy* immobile = new PiegeImmobile(position.x, position.y, IMMOBILE);
 	}
+private:
+	Vector2f position;
 };

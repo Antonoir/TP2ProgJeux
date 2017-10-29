@@ -5,4 +5,5 @@ class UsineEnemy
 {
 public:
 	virtual Enemy* fabriquerEnemy() = 0;
+	static enum enemies { MOBILE, IMMOBILE, ABORIGENES };
 };

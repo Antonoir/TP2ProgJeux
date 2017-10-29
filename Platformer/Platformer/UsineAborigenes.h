@@ -7,6 +7,8 @@ class UsineAborigenes : public UsineEnemy
 public:
 	Enemy* fabriquerEnemy()
 	{
-		return new Aborigenes();
+		Enemy* aborigenes = new Aborigenes(position.x, position.y, ABORIGENES);
 	}
+private:
+	Vector2f position;
 };

@@ -7,6 +7,8 @@ class UsinePiegeMobile : public UsineEnemy
 public:
 	Enemy* fabriquerEnemy()
 	{
-		return new PiegeMobile();
+		Enemy* mobile = new PiegeMobile(position.x, position.y, MOBILE);
 	}
+private:
+	Vector2f position;
 };
