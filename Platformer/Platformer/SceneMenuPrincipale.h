@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Scene.h"
 #include "Joueur.h"
-#include <Windows.h>
+#include "Textbox.h"
 
 namespace platformer
 {
@@ -21,7 +21,13 @@ namespace platformer
 	private:
 		Texture ecranMenuT;
 		Sprite ecranMenu;
-		
+		Textbox textbox;
+		Textbox textboxErreur;
+		Font font;
 
+		bool backspaceActif = false;
+		bool enterActif = false;
+
+		Textbox* textboxActif = nullptr;
 	};
 }
