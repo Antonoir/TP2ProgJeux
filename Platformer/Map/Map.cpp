@@ -2,22 +2,82 @@
 #include "Map.h"
 
 using namespace std;
+using namespace sf;
 
 Map::Map()
 {
-	if (spriteSheetTexture.loadFromFile("Assets\\Sprites\\spriteGame.png"))
+	//blue
+	blueSquare.setSize(Vector2f(32, 32));
+	blueSquare.setFillColor(Color::Blue);
+	//green
+	greenSquare.setSize(Vector2f(32, 32));
+	greenSquare.setFillColor(Color::Green);
+}
+
+Map::~Map()
+{
+	for (int i = 0; i < 1125; ++i)
+		delete pointTable[i];
+}
+
+bool Map::Create(int mapNumber)
+{
+	string path = "Assets\\Maps\\Map" + to_string(mapNumber) + ".txt";
+	int ctr = 0;
+	int ctrPosX = 0;
+	int ctrPosY = 0;
+	ifstream map(path);
+	if (map.is_open())
 	{
-		spriteSheet.setTexture(spriteSheetTexture);
+		string line;
+		while (getline(map, line))
+		{
+			int codeType;
+			stringstream elem(line);
+
+			while (elem >> codeType)
+			{
+				pointTable[ctr] = new Point(ctrPosX, ctrPosY, getType(codeType));
+				ctr++;
+				if (ctr % 45 == 0)
+				{
+					ctrPosY += 32;
+					ctrPosX = 0;
+				}
+				else
+					ctrPosX += 32;
+			}
+		}
+
+		return true;
+	}
+	else
+		return false;
+}
+
+blocType Map::getType(int codeType)
+{
+	switch (codeType)
+	{
+	case 0: return blocType::sky;
+		break;
+	case 1: return blocType::grass;
+		break;
 	}
 }
 
-void Map::Create(int mapNumber)
+void Map::Draw(RenderWindow &mainWin)
 {
-	string path = "Assets\\Maps\\Map" + to_string(mapNumber) + ".txt";
-
-	ifstream map(path);
-	if (!map.is_open())
-		cout << "you got NUKED" << endl;
-	else
-		cout << "you are alive" << endl;
+	for (int i = 0; i < 1125; ++i)
+	{
+		switch (pointTable[i]->GetType())
+		{
+		case blocType::sky:	blueSquare.setPosition(pointTable[i]->GetX(), pointTable[i]->GetY());
+			mainWin.draw(blueSquare);
+			break;
+		case blocType::grass:	greenSquare.setPosition(pointTable[i]->GetX(), pointTable[i]->GetY());
+			mainWin.draw(greenSquare);
+			break;
+		}
+	}
 }

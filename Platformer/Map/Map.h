@@ -3,14 +3,18 @@
 #include <fstream>
 #include <sstream>
 #include <SFML/Graphics.hpp>
+#include "Point.h"
 
 class Map
 {
 public:
 	Map();
-	void Create(int mapNumber);
-	void Draw(sf::RenderWindow mainWin);
+	~Map();
+	bool Create(int mapNumber);
+	void Draw(sf::RenderWindow &mainWin);
 private:
-	sf::Texture spriteSheetTexture;
-	sf::Sprite spriteSheet;
+	blocType getType(int codeType);
+	sf::RectangleShape blueSquare;
+	sf::RectangleShape greenSquare;
+	Point* pointTable[1125];
 };
