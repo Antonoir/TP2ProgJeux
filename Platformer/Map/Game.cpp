@@ -31,7 +31,6 @@ int Game::run()
 
 bool Game::init()
 {
-	Map map;
 	map.Create(1);
 	return true;
 }
@@ -58,6 +57,8 @@ void Game::draw()
 {
 	//Toujours important d'effacer l'écran précédent
 	mainWin.clear();
+
+	map.Draw(mainWin);
 
 	mainWin.display();
 }

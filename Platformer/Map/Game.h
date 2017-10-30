@@ -22,6 +22,7 @@ private:
 	void update();
 	void draw();
 
+	Map map;
 	RenderWindow mainWin;
 	View view;
 	Event event;
