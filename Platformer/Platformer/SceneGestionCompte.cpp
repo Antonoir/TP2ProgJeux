@@ -1,17 +1,18 @@
-#include "SceneMenuPrincipale.h"
+#include "SceneGestionCompte.h"
 
 using namespace platformer;
-SceneMenuPrincipale::SceneMenuPrincipale()
+
+SceneGestionCompte::SceneGestionCompte()
 {
 
 }
 
-SceneMenuPrincipale::~SceneMenuPrincipale()
+SceneGestionCompte::~SceneGestionCompte()
 {
 
 }
 
-Scene::scenes SceneMenuPrincipale::run()
+SceneGestionCompte::scenes SceneGestionCompte::run()
 {
 	while (isRunning)
 	{
@@ -23,9 +24,9 @@ Scene::scenes SceneMenuPrincipale::run()
 	return transitionVersScene;
 }
 
-bool SceneMenuPrincipale::init(RenderWindow * const window)
+bool SceneGestionCompte::init(RenderWindow * const window)
 {
-	if (!ecranMenuT.loadFromFile("Ressources\\Sprites\\Title.png"))
+	if (!ecranGestionCompteT.loadFromFile("Ressources\\Sprites\\Title.png"))
 	{
 		return false;
 	}
@@ -35,8 +36,10 @@ bool SceneMenuPrincipale::init(RenderWindow * const window)
 		return false;
 	}
 
-	ecranMenu.setTexture(ecranMenuT);
-	
+	ecranGestionCompte.setTexture(ecranGestionCompteT);
+
+	//Les positions sont arbitraires, obtenus par essai et erreur.
+	//par rapport au fond d'écran
 	textbox.init(480, 24, Vector2f(430, 320), font);
 	textboxErreur.initInfo(Vector2f(430, 290), font, true);
 
@@ -44,12 +47,13 @@ bool SceneMenuPrincipale::init(RenderWindow * const window)
 	isRunning = true;
 	instruction.setFont(font);
 	instruction.setColor(Color::White);
-	instruction.setPosition(25, 10);
-	instruction.setString("1-LogIn 2-Gestion de Compte 3-Meilleur Scores");
+	instruction.setPosition(10, 10);
+	instruction.setString("1-EffacerCompte 2-CreerCompte \n 3-ModifierCompte 4-RetourMenu");
+
 	return true;
 }
 
-void SceneMenuPrincipale::getInputs()
+void SceneGestionCompte::getInputs()
 {
 	while (mainWin->pollEvent(event))
 	{
@@ -86,17 +90,22 @@ void SceneMenuPrincipale::getInputs()
 				if (textbox.getTexte() == "1")
 				{
 					isRunning = false;
-					transitionVersScene = Scene::scenes::TITRE;
+					transitionVersScene = Scene::scenes::EFFACER;
 				}
 				else if (textbox.getTexte() == "2")
 				{
 					isRunning = false;
-					transitionVersScene = Scene::scenes::GESTIONCOMPTE;
+					transitionVersScene = Scene::scenes::CREER;
 				}
 				else if (textbox.getTexte() == "3")
 				{
 					isRunning = false;
-					transitionVersScene = Scene::scenes::SCORE;
+					transitionVersScene = Scene::scenes::MODIFIER;
+				}
+				else if (textbox.getTexte() == "4")
+				{
+					isRunning = false;
+					transitionVersScene = Scene::scenes::MENUPRINCIPALE;
 				}
 				else
 				{
@@ -110,27 +119,27 @@ void SceneMenuPrincipale::getInputs()
 				backspaceActif = true;  //Pour s'assurer que backspace n'est pas saisie comme caractère
 			}
 		}
-			if (!backspaceActif && !enterActif && textboxActif != nullptr && (event.type == Event::TextEntered))
-			{
-				if (event.text.unicode < 128) //Travailler en unicode n'est pas simple en C++; on peut vivre avec du simple
-				{                             //ascii pour ce tp (libre à vous d'aller plus loin si vous voulez)
-					textboxActif->ajouterChar((char)event.text.unicode);
-				}
+		if (!backspaceActif && !enterActif && textboxActif != nullptr && (event.type == Event::TextEntered))
+		{
+			if (event.text.unicode < 128) //Travailler en unicode n'est pas simple en C++; on peut vivre avec du simple
+			{                             //ascii pour ce tp (libre à vous d'aller plus loin si vous voulez)
+				textboxActif->ajouterChar((char)event.text.unicode);
 			}
+		}
 		enterActif = false;
 		backspaceActif = false;
 	}
 }
 
-void SceneMenuPrincipale::update()
+void SceneGestionCompte::update()
 {
 
 }
 
-void SceneMenuPrincipale::draw()
+void SceneGestionCompte::draw()
 {
 	mainWin->clear();
-	mainWin->draw(ecranMenu);
+	mainWin->draw(ecranGestionCompte);
 	mainWin->draw(instruction);
 	textbox.dessiner(mainWin);
 	textboxErreur.dessiner(mainWin);

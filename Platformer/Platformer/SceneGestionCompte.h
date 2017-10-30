@@ -1,16 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Scene.h"
-#include "Joueur.h"
 #include "Textbox.h"
+
+using namespace sf;
 
 namespace platformer
 {
-	class SceneMenuPrincipale : public Scene
+	class SceneGestionCompte : public Scene
 	{
 	public:
-		SceneMenuPrincipale();
-		~SceneMenuPrincipale();
+		SceneGestionCompte();
+		~SceneGestionCompte();
 
 		scenes run();
 		bool init(RenderWindow * const window);
@@ -19,8 +20,9 @@ namespace platformer
 		void draw();
 
 	private:
-		Texture ecranMenuT;
-		Sprite ecranMenu;
+		Texture ecranGestionCompteT;
+		Sprite ecranGestionCompte;
+
 		Textbox textbox;
 		Textbox textboxErreur;
 		Font font;
@@ -32,3 +34,4 @@ namespace platformer
 		Textbox* textboxActif = nullptr;
 	};
 }
+

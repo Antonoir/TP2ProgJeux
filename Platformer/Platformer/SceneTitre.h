@@ -26,9 +26,11 @@ namespace platformer
 		Texture ecranTitreT;
 		Sprite ecranTitre;
 
-		Textbox textbox;
+		Textbox textboxUserName;
+		Textbox textboxPassword;
 		Textbox textboxErreur; // Ce textbox agit plutôt comme un messagebox.
 		Font font;
+		Text instruction;
 
 		//Nécessaire car on ne peut pas que le code ascii que Enter et Backspace ne soit jamais saisie
 		bool backspaceActif = false;

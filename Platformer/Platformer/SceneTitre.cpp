@@ -39,11 +39,16 @@ bool SceneTitre::init(RenderWindow * const window)
 
 	//Les positions sont arbitraires, obtenus par essai et erreur.
 	//par rapport au fond d'écran
-	textbox.init(480, 24, Vector2f(430, 320), font);
+	textboxUserName.init(480, 24, Vector2f(430, 320), font);
+	textboxPassword.init(480, 24, Vector2f(430, 360), font);
 	textboxErreur.initInfo(Vector2f(430, 290), font, true);
 
 	this->mainWin = window;
 	isRunning = true;
+	instruction.setFont(font);
+	instruction.setColor(Color::White);
+	instruction.setPosition(150, 10);
+	instruction.setString("1-Retourner au menu principal");
 
 	return true;
 }
@@ -65,10 +70,19 @@ void SceneTitre::getInputs()
 		if (event.type == Event::MouseButtonPressed)
 		{
 			//Si on touche à la textbox avec la souris
-			if (textbox.touche(Mouse::getPosition(*mainWin)))
+			if (textboxUserName.touche(Mouse::getPosition(*mainWin)))
 			{
-				textboxActif = &textbox; //Ce textbox devient actif
-				textbox.selectionner();  //on l'affiche comme étant sélectionné
+				textboxPassword.deSelectionner();
+				textboxActif = &textboxUserName; //Ce textbox devient actif
+				textboxUserName.selectionner();  //on l'affiche comme étant sélectionné
+				textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
+			}
+
+			else if (textboxPassword.touche(Mouse::getPosition(*mainWin)))
+			{
+				textboxUserName.deSelectionner();
+				textboxActif = &textboxPassword; //Ce textbox devient actif
+				textboxPassword.selectionner();  //on l'affiche comme étant sélectionné
 				textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 			}
 			else
@@ -76,7 +90,8 @@ void SceneTitre::getInputs()
 				//Sinon aucun textbox actif
 				//Ce else devrait être dans toutes vos fenêtres où il n'y a pas de textbox.
 				textboxActif = nullptr;
-				textbox.deSelectionner();
+				textboxPassword.deSelectionner();
+				textboxUserName.deSelectionner();
 			}
 
 		}
@@ -92,16 +107,22 @@ void SceneTitre::getInputs()
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 
 				//Condition bison pour voir que la transition fonctionne.
-				if (textbox.getTexte() == "password")
+				if (textboxUserName.getTexte() == "antoine" && textboxPassword.getTexte()=="password")
 				{
 					isRunning = false;
 					transitionVersScene = Scene::scenes::NIVEAU1;
 				}
+				if (textboxUserName.getTexte() == "1" || textboxPassword.getTexte() == "1")
+				{
+					isRunning = false;
+					transitionVersScene = Scene::scenes::MENUPRINCIPALE;
+				}
 				else
 				{
 					//On affiche notre erreur.
-					textboxErreur.insererTexte("Mauvais mot de passe, entrez-en un bon!");
+					textboxErreur.insererTexte("Mauvais username ou Mauvais mot de passe, entrez-en un bon!");
 				}
+
 			}
 			else if (event.key.code == Keyboard::BackSpace)
 			{
@@ -134,7 +155,9 @@ void SceneTitre::draw()
 {
 	mainWin->clear();
 	mainWin->draw(ecranTitre);
-	textbox.dessiner(mainWin);
+	mainWin->draw(instruction);
+	textboxUserName.dessiner(mainWin);
+	textboxPassword.dessiner(mainWin);
 	textboxErreur.dessiner(mainWin);
 	mainWin->display();
 }

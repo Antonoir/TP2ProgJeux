@@ -99,7 +99,7 @@ void SceneNiveau1::getInputs()
 			if (event.key.code == sf::Keyboard::Escape)
 			{
 				isRunning = false;
-				transitionVersScene = Scene::scenes::TITRE;
+				transitionVersScene = Scene::scenes::MENUPRINCIPALE;
 			}
 		}
 	}
