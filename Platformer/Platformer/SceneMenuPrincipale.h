@@ -19,6 +19,7 @@ namespace platformer
 		void draw();
 
 	private:
+		//Test
 		Texture ecranMenuT;
 		Sprite ecranMenu;
 		Textbox textbox;
