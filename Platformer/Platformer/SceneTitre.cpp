@@ -1,5 +1,5 @@
 #include "SceneTitre.h"
-
+#include "Controleur.h"
 using namespace platformer;
 
 SceneTitre::SceneTitre()
@@ -48,7 +48,7 @@ bool SceneTitre::init(RenderWindow * const window)
 	instruction.setFont(font);
 	instruction.setColor(Color::White);
 	instruction.setPosition(150, 10);
-	instruction.setString("1-Retourner au menu principal");
+	instruction.setString("M-Retourner au menu principal");
 
 	return true;
 }
@@ -97,6 +97,13 @@ void SceneTitre::getInputs()
 		}
 
 		//Un événement de touche de clavier AVEC un textobx actif
+		if (event.type == Event::KeyPressed && textboxActif ==nullptr)
+		{
+				isRunning = false;
+				sceneActive = Controleur::getInstance()->requeteChangementScene();
+				transitionVersScene = sceneActive;			
+		}
+		
 		if (event.type == Event::KeyPressed && textboxActif != nullptr)
 		{
 			//ON VA SE SERVIR DE ENTER PARTOUT DANS LE TP POUR VALIDER LES INFOS DANS TOUS
@@ -105,18 +112,13 @@ void SceneTitre::getInputs()
 			if (event.key.code == Keyboard::Return)
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
-
-				//Condition bison pour voir que la transition fonctionne.
-				if (textboxUserName.getTexte() == "antoine" && textboxPassword.getTexte()=="password")
+				isRunning = false;
+				if (Controleur::getInstance()->requeteUserName(textboxUserName) && Controleur::getInstance()->requetePassword(textboxPassword))
 				{
-					isRunning = false;
-					transitionVersScene = Scene::scenes::NIVEAU1;
+					sceneActive = Scene::scenes::NIVEAU1;
+					transitionVersScene = sceneActive;
 				}
-				if (textboxUserName.getTexte() == "1" || textboxPassword.getTexte() == "1")
-				{
-					isRunning = false;
-					transitionVersScene = Scene::scenes::MENUPRINCIPALE;
-				}
+				
 				else
 				{
 					//On affiche notre erreur.

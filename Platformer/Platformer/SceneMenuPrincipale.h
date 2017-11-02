@@ -19,17 +19,10 @@ namespace platformer
 		void draw();
 
 	private:
-		//Test
+		Scene::scenes sceneActive;
 		Texture ecranMenuT;
 		Sprite ecranMenu;
-		Textbox textbox;
-		Textbox textboxErreur;
 		Font font;
 		Text instruction;
-
-		bool backspaceActif = false;
-		bool enterActif = false;
-
-		Textbox* textboxActif = nullptr;
 	};
 }
