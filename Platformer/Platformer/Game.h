@@ -17,8 +17,8 @@ namespace platformer
 		int testTest();
 
 	private:
-		const int LARGEUR = 800;
-		const int HAUTEUR = 480;
+		const int LARGEUR = 1280;
+		const int HAUTEUR = 800;
 
 		bool init();
 

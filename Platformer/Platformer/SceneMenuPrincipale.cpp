@@ -5,7 +5,7 @@ SceneMenuPrincipale::SceneMenuPrincipale()
 {
 
 }
-//Test
+
 SceneMenuPrincipale::~SceneMenuPrincipale()
 {
 
