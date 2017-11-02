@@ -23,15 +23,12 @@ namespace platformer
 		Texture ecranGestionCompteT;
 		Sprite ecranGestionCompte;
 
-		Textbox textbox;
-		Textbox textboxErreur;
 		Font font;
 		Text instruction;
 
+		Scene::scenes sceneActive;
 		bool backspaceActif = false;
 		bool enterActif = false;
-
-		Textbox* textboxActif = nullptr;
 	};
 }
 

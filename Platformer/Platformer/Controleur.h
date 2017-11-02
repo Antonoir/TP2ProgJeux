@@ -1,13 +1,21 @@
 #pragma once
-class Controleur
+#include "Scene.h"
+#include <string>
+#include "Textbox.h"
+namespace platformer
 {
-public:
-	static Controleur *getInstance();
-	static void release();
-	
+	class Controleur
+	{
+	public:
+		static Controleur *getInstance();
+		static void release();
+		Scene::scenes requeteChangementScene();
+		bool requeteUserName(Textbox username);
+		bool requetePassword(Textbox password);
 
-private:
-	Controleur();
-	static Controleur *instance;
-	
-};
+	private:
+		Controleur();
+		static Controleur *instance;
+
+	};
+}

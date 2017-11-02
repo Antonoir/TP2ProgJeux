@@ -26,6 +26,7 @@ namespace platformer
 		Texture ecranTitreT;
 		Sprite ecranTitre;
 
+		Scene::scenes sceneActive;
 		Textbox textboxUserName;
 		Textbox textboxPassword;
 		Textbox textboxErreur; // Ce textbox agit plutôt comme un messagebox.
