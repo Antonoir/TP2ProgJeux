@@ -73,4 +73,34 @@ namespace platformer
 		}
 		return valide;
 	}
+
+	bool Controleur::requeteNickNameCompte(Textbox nickname)
+	{
+		bool valide = false;
+		return valide;
+	}
+
+	bool Controleur::requetePasswordCompte(Textbox password)
+	{
+		bool valide = false;
+		return valide;
+	}
+
+	bool Controleur::requeteNameCompte(Textbox name)
+	{
+		bool valide = false;
+		return valide;
+	}
+
+	bool Controleur::requeteFirstNameCompte(Textbox firstname)
+	{
+		bool valide = false;
+		return valide;
+	}
+
+	bool Controleur::requeteEmailCompte(Textbox email)
+	{
+		bool valide = false;
+		return valide;
+	}
 }
