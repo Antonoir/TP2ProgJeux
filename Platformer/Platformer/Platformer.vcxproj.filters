@@ -188,6 +188,9 @@
     <ClInclude Include="SceneCreerCompte.h">
       <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
     </ClInclude>
+    <ClInclude Include="Drawable.h">
+      <Filter>Fichiers d%27en-tête\Drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Ressources\Backgrounds\Layer0_0.png">
