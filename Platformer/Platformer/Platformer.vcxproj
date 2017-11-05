@@ -100,7 +100,6 @@
     <ClCompile Include="SceneMenuPrincipale.cpp" />
     <ClCompile Include="SceneNiveau1.cpp" />
     <ClCompile Include="SceneTitre.cpp" />
-    <ClCompile Include="Testeur.cpp" />
     <ClCompile Include="Textbox.cpp" />
     <ClCompile Include="Tuile.cpp" />
   </ItemGroup>
@@ -117,7 +116,6 @@
     <ClInclude Include="SceneMenuPrincipale.h" />
     <ClInclude Include="SceneNiveau1.h" />
     <ClInclude Include="SceneTitre.h" />
-    <ClInclude Include="Testeur.h" />
     <ClInclude Include="Textbox.h" />
     <ClInclude Include="Tuile.h" />
     <ClInclude Include="UsineAborigenes.h" />

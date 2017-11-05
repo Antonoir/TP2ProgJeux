@@ -46,6 +46,42 @@
     <Filter Include="Fichiers de ressources\Sprites\Player">
       <UniqueIdentifier>{170c0d34-ef94-4b38-ae1a-1597bc683d42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Menu">
+      <UniqueIdentifier>{58f69046-9499-42d1-ac5b-b8c10374452b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Menu\scene">
+      <UniqueIdentifier>{5112fbf9-d38c-4441-8ae3-01219a08f350}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Drawable">
+      <UniqueIdentifier>{558a6e71-8ff7-4a56-93a1-f4a4b45b03f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Drawable\Movable">
+      <UniqueIdentifier>{432eb8c1-c123-42cb-b873-4fb60a9af9eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Drawable\Movable\Ennemie">
+      <UniqueIdentifier>{e3a440cf-561f-4cc5-a712-ef45d327c4d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine">
+      <UniqueIdentifier>{7a0382f6-8b1e-4411-a416-2c5d6277b28d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\drawable">
+      <UniqueIdentifier>{7fa918c7-d28f-436c-aaf1-8560b0780f76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\drawable\Movable">
+      <UniqueIdentifier>{c480c8db-7ea8-4c9b-8306-e9fcbe01253d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\drawable\Movable\Ennemie">
+      <UniqueIdentifier>{6329af5c-834d-443d-88a3-5b72c4510447}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\drawable\Movable\Ennemie\Usine">
+      <UniqueIdentifier>{c3420835-af65-4965-9766-6b168a4e9db8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Menu">
+      <UniqueIdentifier>{028e8f23-3fcf-4df6-86f0-d14668d0b645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Menu\scene">
+      <UniqueIdentifier>{9e39dc09-074f-428b-af8b-5154a5117f2e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -54,103 +90,97 @@
     <ClCompile Include="Game.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Testeur.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneTitre.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneNiveau1.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Joueur.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Textbox.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Controleur.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Aborigenes.cpp">
+      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
-    <ClCompile Include="PiegeMobile.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="Joueur.cpp">
+      <Filter>Fichiers sources\drawable\Movable</Filter>
     </ClCompile>
     <ClCompile Include="PiegeImmobile.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
-    <ClCompile Include="Aborigenes.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneMenuPrincipale.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneGestionCompte.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="PiegeMobile.cpp">
+      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
     <ClCompile Include="Tuile.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="Controleur.cpp">
+      <Filter>Fichiers sources\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Textbox.cpp">
+      <Filter>Fichiers sources\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGestionCompte.cpp">
+      <Filter>Fichiers sources\Menu\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenuPrincipale.cpp">
+      <Filter>Fichiers sources\Menu\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneNiveau1.cpp">
+      <Filter>Fichiers sources\Menu\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneTitre.cpp">
+      <Filter>Fichiers sources\Menu\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Testeur.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneTitre.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneNiveau1.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Joueur.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Textbox.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Controleur.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="UsineEnemy.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PiegeImmobile.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="PiegeMobile.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="Aborigenes.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="UsinePiegeImmobile.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="UsinePiegeMobile.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="UsineAborigenes.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="SceneMenuPrincipale.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
     </ClInclude>
     <ClInclude Include="SceneGestionCompte.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenuPrincipale.h">
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneNiveau1.h">
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneTitre.h">
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Controleur.h">
+      <Filter>Fichiers d%27en-tête\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Textbox.h">
+      <Filter>Fichiers d%27en-tête\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
+    </ClInclude>
+    <ClInclude Include="Aborigenes.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
+    </ClInclude>
+    <ClInclude Include="PiegeImmobile.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
+    </ClInclude>
+    <ClInclude Include="PiegeMobile.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
+    </ClInclude>
+    <ClInclude Include="UsineAborigenes.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
+    </ClInclude>
+    <ClInclude Include="UsineEnemy.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
+    </ClInclude>
+    <ClInclude Include="UsinePiegeImmobile.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
+    </ClInclude>
+    <ClInclude Include="UsinePiegeMobile.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
+    </ClInclude>
+    <ClInclude Include="Joueur.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable</Filter>
     </ClInclude>
     <ClInclude Include="Tuile.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\Drawable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
