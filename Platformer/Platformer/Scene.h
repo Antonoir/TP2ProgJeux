@@ -1,6 +1,7 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
+#include "Game.h"
+
 
 using namespace sf;
 
@@ -14,6 +15,9 @@ namespace platformer
 	public:
 		//Quand vos ajouterez des scènes, ajouter un enum ici
 		enum scenes {TITRE, NIVEAU1, SORTIE, MENUPRINCIPALE,GESTIONCOMPTE,SCORE,EFFACER,CREER,MODIFIER};
+		static const int NOMBRE_TUILES_X = 40;
+		static const int NOMBRE_TUILES_Y = 25;
+		static const int TAILLE_TUILES = 32;
 
 		virtual ~Scene() {}  //Pour que le destructeur de l'objet en mémoire soit apellé
 		virtual scenes run() = 0;

@@ -5,6 +5,7 @@
 #include "SceneGestionCompte.h"
 
 using namespace platformer;
+using namespace sf;
 
 Game::Game()
 {

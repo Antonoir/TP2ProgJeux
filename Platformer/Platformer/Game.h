@@ -1,8 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
-
 namespace platformer
 {	
 	/// <summary>
@@ -19,10 +17,9 @@ namespace platformer
 	private:
 		const int LARGEUR = 1280;
 		const int HAUTEUR = 800;
-
 		bool init();
 
-		RenderWindow mainWin;
-		Event event;
+		sf::RenderWindow mainWin;
+		sf::Event event;
 	};
 }
