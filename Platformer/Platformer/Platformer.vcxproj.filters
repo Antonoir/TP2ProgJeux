@@ -126,9 +126,6 @@
     <ClCompile Include="SceneTitre.cpp">
       <Filter>Fichiers sources\Menu\scene</Filter>
     </ClCompile>
-    <ClCompile Include="Drawable.cpp">
-      <Filter>Fichiers sources\drawable</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -183,9 +180,6 @@
       <Filter>Fichiers d%27en-tête\Drawable\Movable</Filter>
     </ClInclude>
     <ClInclude Include="Tuile.h">
-      <Filter>Fichiers d%27en-tête\Drawable</Filter>
-    </ClInclude>
-    <ClInclude Include="Drawable.h">
       <Filter>Fichiers d%27en-tête\Drawable</Filter>
     </ClInclude>
   </ItemGroup>
