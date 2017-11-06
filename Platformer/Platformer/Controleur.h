@@ -15,7 +15,6 @@ namespace platformer
 		bool requeteNickNameCompte(Textbox nickname);
 		bool requetePasswordCompte(Textbox password);
 		bool requeteNameCompte(Textbox name);
-		bool requeteFirstNameCompte(Textbox firstname);
 		bool requeteEmailCompte(Textbox email);
 
 	private:

@@ -169,7 +169,7 @@ void SceneCreerCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword) && Controleur::getInstance()->requeteNameCompte(textboxName) && Controleur::getInstance()->requeteFirstNameCompte(textboxFirstName) && Controleur::getInstance()->requeteEmailCompte(textboxEmail))
+				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword) && Controleur::getInstance()->requeteNameCompte(textboxName) && Controleur::getInstance()->requeteEmailCompte(textboxEmail))
 				{
 					compteValide = true;
 				}
