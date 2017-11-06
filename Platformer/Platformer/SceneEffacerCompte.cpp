@@ -1,19 +1,19 @@
-#include "SceneCreerCompte.h"
+#include "SceneEffacerCompte.h"
 #include "Controleur.h"
 
 using namespace platformer;
 
-SceneCreerCompte::SceneCreerCompte()
+SceneEffacerCompte::SceneEffacerCompte()
 {
 
 }
 
-SceneCreerCompte::~SceneCreerCompte()
+SceneEffacerCompte::~SceneEffacerCompte()
 {
 
 }
 
-Scene::scenes SceneCreerCompte::run()
+Scene::scenes SceneEffacerCompte::run()
 {
 	while (isRunning)
 	{
@@ -25,9 +25,9 @@ Scene::scenes SceneCreerCompte::run()
 	return transitionVersScene;
 }
 
-bool SceneCreerCompte::init(RenderWindow * const window)
+bool SceneEffacerCompte::init(RenderWindow * const window)
 {
-	if (!ecranCreerCompteT.loadFromFile("Ressources\\Sprites\\Title.png"))
+	if (!ecranEffacerCompteT.loadFromFile("Ressources\\Sprites\\Title.png"))
 	{
 		return false;
 	}
@@ -37,21 +37,17 @@ bool SceneCreerCompte::init(RenderWindow * const window)
 		return false;
 	}
 
-	ecranCreerCompte.setTexture(ecranCreerCompteT);
+	ecranEffacerCompte.setTexture(ecranEffacerCompteT);
 
 	textboxNickName.init(480, 24, Vector2f(650, 240), font);
 	textboxPassword.init(480, 24, Vector2f(650, 280), font);
-	textboxName.init(480, 24, Vector2f(650, 320), font);
-	textboxFirstName.init(480, 24, Vector2f(650, 360), font);
-	textboxEmail.init(480, 24, Vector2f(650, 400), font);
-
 
 	this->mainWin = window;
 	isRunning = true;
 	instruction.setFont(font);
 	instruction.setColor(Color::White);
 	instruction.setPosition(150, 10);
-	instruction.setString("Entrer un nickname, mot de passe, nom, prenom et email \nEntrer M pour revenir au menu");
+	instruction.setString("Entrer un nickname et un mot de passe valide \nEntrer M pour revenir au menu");
 
 	nickname.setFont(font);
 	nickname.setColor(Color::White);
@@ -63,25 +59,10 @@ bool SceneCreerCompte::init(RenderWindow * const window)
 	password.setPosition(200, 256);
 	password.setString("password");
 
-	name.setFont(font);
-	name.setColor(Color::White);
-	name.setPosition(200, 296);
-	name.setString("name");
-
-	firstname.setFont(font);
-	firstname.setColor(Color::White);
-	firstname.setPosition(200, 336);
-	firstname.setString("firstname");
-
-	email.setFont(font);
-	email.setColor(Color::White);
-	email.setPosition(200, 376);
-	email.setString("email");
-
 	return true;
 }
 
-void SceneCreerCompte::getInputs()
+void SceneEffacerCompte::getInputs()
 {
 	while (mainWin->pollEvent(event))
 	{
@@ -96,9 +77,6 @@ void SceneCreerCompte::getInputs()
 		if (textboxNickName.touche(Mouse::getPosition(*mainWin)))
 		{
 			textboxPassword.deSelectionner();
-			textboxName.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxEmail.deSelectionner();
 			textboxActif = &textboxNickName; //Ce textbox devient actif
 			textboxNickName.selectionner();  //on l'affiche comme étant sélectionné
 			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
@@ -107,44 +85,8 @@ void SceneCreerCompte::getInputs()
 		else if (textboxPassword.touche(Mouse::getPosition(*mainWin)))
 		{
 			textboxNickName.deSelectionner();
-			textboxName.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxEmail.deSelectionner();
 			textboxActif = &textboxPassword; //Ce textbox devient actif
 			textboxPassword.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
-		}
-
-		else if (textboxName.touche(Mouse::getPosition(*mainWin)))
-		{
-			textboxNickName.deSelectionner();
-			textboxPassword.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxEmail.deSelectionner();
-			textboxActif = &textboxName; //Ce textbox devient actif
-			textboxName.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
-		}
-
-		else if (textboxFirstName.touche(Mouse::getPosition(*mainWin)))
-		{
-			textboxNickName.deSelectionner();
-			textboxPassword.deSelectionner();
-			textboxName.deSelectionner();
-			textboxEmail.deSelectionner();
-			textboxActif = &textboxFirstName; //Ce textbox devient actif
-			textboxFirstName.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
-		}
-
-		else if (textboxEmail.touche(Mouse::getPosition(*mainWin)))
-		{
-			textboxNickName.deSelectionner();
-			textboxPassword.deSelectionner();
-			textboxName.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxActif = &textboxEmail; //Ce textbox devient actif
-			textboxEmail.selectionner();  //on l'affiche comme étant sélectionné
 			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 		}
 
@@ -155,11 +97,8 @@ void SceneCreerCompte::getInputs()
 			textboxActif = nullptr;
 			textboxPassword.deSelectionner();
 			textboxNickName.deSelectionner();
-			textboxName.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxEmail.deSelectionner();
 		}
-		
+
 		if (event.type == Event::KeyPressed && textboxActif == nullptr)
 		{
 			isRunning = false;
@@ -176,15 +115,15 @@ void SceneCreerCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword) && Controleur::getInstance()->requeteNameCompte(textboxName) && Controleur::getInstance()->requeteNameCompte(textboxFirstName) && Controleur::getInstance()->requeteEmailCompte(textboxEmail))
+				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
 				{
-					compteValide = true;
+					infoValide = true;
 				}
 
 				else
 				{
 					//On affiche notre erreur.
-					textboxErreur.insererTexte("Mauvais nickname, motdepasse, nom, prenom ou email entrez-en un bon!");
+					textboxErreur.insererTexte("Mauvais nickname ou mot de passe entrez-en un bon!");
 				}
 
 			}
@@ -210,29 +149,20 @@ void SceneCreerCompte::getInputs()
 	backspaceActif = false;
 }
 
-void SceneCreerCompte::update()
+void SceneEffacerCompte::update()
 {
 
 }
 
-void SceneCreerCompte::draw()
+void SceneEffacerCompte::draw()
 {
 	mainWin->clear();
-	mainWin->draw(ecranCreerCompte);
+	mainWin->draw(ecranEffacerCompte);
 	mainWin->draw(instruction);
 	mainWin->draw(nickname);
 	mainWin->draw(password);
-	mainWin->draw(name);
-	mainWin->draw(firstname);
-	mainWin->draw(email);
 	textboxNickName.dessiner(mainWin);
 	textboxPassword.dessiner(mainWin);
-	textboxName.dessiner(mainWin);
-	textboxFirstName.dessiner(mainWin);
-	textboxEmail.dessiner(mainWin);
 	textboxErreur.dessiner(mainWin);
 	mainWin->display();
 }
-
-
-

@@ -129,6 +129,12 @@
     <ClCompile Include="SceneCreerCompte.cpp">
       <Filter>Fichiers sources\Menu\scene</Filter>
     </ClCompile>
+    <ClCompile Include="SceneModifierCompte.cpp">
+      <Filter>Fichiers sources\Menu\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEffacerCompte.cpp">
+      <Filter>Fichiers sources\Menu\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -190,6 +196,12 @@
     </ClInclude>
     <ClInclude Include="Drawable.h">
       <Filter>Fichiers d%27en-tête\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneModifierCompte.h">
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEffacerCompte.h">
+      <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

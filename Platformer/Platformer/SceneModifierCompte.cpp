@@ -1,19 +1,19 @@
-#include "SceneCreerCompte.h"
 #include "Controleur.h"
+#include "SceneModifierCompte.h"
 
 using namespace platformer;
 
-SceneCreerCompte::SceneCreerCompte()
+SceneModifierCompte::SceneModifierCompte()
 {
 
 }
 
-SceneCreerCompte::~SceneCreerCompte()
+SceneModifierCompte::~SceneModifierCompte()
 {
 
 }
 
-Scene::scenes SceneCreerCompte::run()
+Scene::scenes SceneModifierCompte::run()
 {
 	while (isRunning)
 	{
@@ -25,9 +25,9 @@ Scene::scenes SceneCreerCompte::run()
 	return transitionVersScene;
 }
 
-bool SceneCreerCompte::init(RenderWindow * const window)
+bool SceneModifierCompte::init(RenderWindow * const window)
 {
-	if (!ecranCreerCompteT.loadFromFile("Ressources\\Sprites\\Title.png"))
+	if (!ecranModifierCompteT.loadFromFile("Ressources\\Sprites\\Title.png"))
 	{
 		return false;
 	}
@@ -37,7 +37,7 @@ bool SceneCreerCompte::init(RenderWindow * const window)
 		return false;
 	}
 
-	ecranCreerCompte.setTexture(ecranCreerCompteT);
+	ecranModifierCompte.setTexture(ecranModifierCompteT);
 
 	textboxNickName.init(480, 24, Vector2f(650, 240), font);
 	textboxPassword.init(480, 24, Vector2f(650, 280), font);
@@ -51,7 +51,7 @@ bool SceneCreerCompte::init(RenderWindow * const window)
 	instruction.setFont(font);
 	instruction.setColor(Color::White);
 	instruction.setPosition(150, 10);
-	instruction.setString("Entrer un nickname, mot de passe, nom, prenom et email \nEntrer M pour revenir au menu");
+	instruction.setString("Entrer un nickname et un mot de passe valide \nEntrer M pour revenir au menu");
 
 	nickname.setFont(font);
 	nickname.setColor(Color::White);
@@ -81,7 +81,7 @@ bool SceneCreerCompte::init(RenderWindow * const window)
 	return true;
 }
 
-void SceneCreerCompte::getInputs()
+void SceneModifierCompte::getInputs()
 {
 	while (mainWin->pollEvent(event))
 	{
@@ -159,7 +159,7 @@ void SceneCreerCompte::getInputs()
 			textboxFirstName.deSelectionner();
 			textboxEmail.deSelectionner();
 		}
-		
+
 		if (event.type == Event::KeyPressed && textboxActif == nullptr)
 		{
 			isRunning = false;
@@ -176,7 +176,7 @@ void SceneCreerCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword) && Controleur::getInstance()->requeteNameCompte(textboxName) && Controleur::getInstance()->requeteNameCompte(textboxFirstName) && Controleur::getInstance()->requeteEmailCompte(textboxEmail))
+				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
 				{
 					compteValide = true;
 				}
@@ -184,7 +184,7 @@ void SceneCreerCompte::getInputs()
 				else
 				{
 					//On affiche notre erreur.
-					textboxErreur.insererTexte("Mauvais nickname, motdepasse, nom, prenom ou email entrez-en un bon!");
+					textboxErreur.insererTexte("Mauvais nickname ou mot de passe entrez-en un bon!");
 				}
 
 			}
@@ -210,29 +210,30 @@ void SceneCreerCompte::getInputs()
 	backspaceActif = false;
 }
 
-void SceneCreerCompte::update()
+void SceneModifierCompte::update()
 {
 
 }
 
-void SceneCreerCompte::draw()
+void SceneModifierCompte::draw()
 {
 	mainWin->clear();
-	mainWin->draw(ecranCreerCompte);
+	mainWin->draw(ecranModifierCompte);
 	mainWin->draw(instruction);
 	mainWin->draw(nickname);
 	mainWin->draw(password);
-	mainWin->draw(name);
-	mainWin->draw(firstname);
-	mainWin->draw(email);
+	if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePassword(textboxPassword))
+	{
+		mainWin->draw(name);
+		mainWin->draw(firstname);
+		mainWin->draw(email);
+		textboxName.dessiner(mainWin);
+		textboxFirstName.dessiner(mainWin);
+		textboxEmail.dessiner(mainWin);
+	}
+	
 	textboxNickName.dessiner(mainWin);
 	textboxPassword.dessiner(mainWin);
-	textboxName.dessiner(mainWin);
-	textboxFirstName.dessiner(mainWin);
-	textboxEmail.dessiner(mainWin);
 	textboxErreur.dessiner(mainWin);
 	mainWin->display();
 }
-
-
-

@@ -7,11 +7,11 @@ using namespace sf;
 
 namespace platformer
 {
-	class SceneCreerCompte : public Scene
+	class SceneEffacerCompte : public Scene
 	{
 	public:
-		SceneCreerCompte();
-		~SceneCreerCompte();
+		SceneEffacerCompte();
+		~SceneEffacerCompte();
 
 		scenes run();
 		bool init(RenderWindow * const window);
@@ -20,27 +20,22 @@ namespace platformer
 		void draw();
 
 	private:
-		Texture ecranCreerCompteT;
-		Sprite ecranCreerCompte;
+		Texture ecranEffacerCompteT;
+		Sprite ecranEffacerCompte;
 		Font font;
 		Text instruction;
 		Text nickname;
 		Text password;
-		Text name;
-		Text firstname;
-		Text email;
 
 		Scene::scenes sceneActive;
 		Textbox textboxNickName;
 		Textbox textboxPassword;
-		Textbox textboxName;
-		Textbox textboxFirstName;
-		Textbox textboxEmail;
 		Textbox textboxErreur;
+
 
 		bool backspaceActif = false;
 		bool enterActif = false;
-		bool compteValide = false;
+		bool infoValide = false;
 
 		Textbox* textboxActif = nullptr;
 	};

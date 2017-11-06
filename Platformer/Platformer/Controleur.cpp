@@ -192,7 +192,7 @@ namespace platformer
 			{
 				if (email.getTexte()[i] == '.')
 				{
-					if (email.getTexte().getSize() - i >= 2 && email.getTexte().getSize() - i <= 3)
+					if (email.getTexte().getSize() - i >= 2 && email.getTexte().getSize() - i <= 4)
 					{
 						valide = true;
 					}

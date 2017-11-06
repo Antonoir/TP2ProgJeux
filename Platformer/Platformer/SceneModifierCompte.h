@@ -7,11 +7,11 @@ using namespace sf;
 
 namespace platformer
 {
-	class SceneCreerCompte : public Scene
+	class SceneModifierCompte : public Scene
 	{
 	public:
-		SceneCreerCompte();
-		~SceneCreerCompte();
+		SceneModifierCompte();
+		~SceneModifierCompte();
 
 		scenes run();
 		bool init(RenderWindow * const window);
@@ -20,8 +20,9 @@ namespace platformer
 		void draw();
 
 	private:
-		Texture ecranCreerCompteT;
-		Sprite ecranCreerCompte;
+		Texture ecranModifierCompteT;
+		Sprite ecranModifierCompte;
+
 		Font font;
 		Text instruction;
 		Text nickname;
@@ -43,5 +44,6 @@ namespace platformer
 		bool compteValide = false;
 
 		Textbox* textboxActif = nullptr;
+
 	};
 }

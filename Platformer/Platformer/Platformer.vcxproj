@@ -97,8 +97,10 @@
     <ClCompile Include="PiegeImmobile.cpp" />
     <ClCompile Include="PiegeMobile.cpp" />
     <ClCompile Include="SceneCreerCompte.cpp" />
+    <ClCompile Include="SceneEffacerCompte.cpp" />
     <ClCompile Include="SceneGestionCompte.cpp" />
     <ClCompile Include="SceneMenuPrincipale.cpp" />
+    <ClCompile Include="SceneModifierCompte.cpp" />
     <ClCompile Include="SceneNiveau1.cpp" />
     <ClCompile Include="SceneTitre.cpp" />
     <ClCompile Include="Textbox.cpp" />
@@ -115,8 +117,10 @@
     <ClInclude Include="PiegeMobile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneCreerCompte.h" />
+    <ClInclude Include="SceneEffacerCompte.h" />
     <ClInclude Include="SceneGestionCompte.h" />
     <ClInclude Include="SceneMenuPrincipale.h" />
+    <ClInclude Include="SceneModifierCompte.h" />
     <ClInclude Include="SceneNiveau1.h" />
     <ClInclude Include="SceneTitre.h" />
     <ClInclude Include="Textbox.h" />
