@@ -90,6 +90,8 @@
   <ItemGroup>
     <ClCompile Include="Aborigenes.cpp" />
     <ClCompile Include="Controleur.cpp" />
+    <ClCompile Include="deplaceable.cpp" />
+    <ClCompile Include="dessinable.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Joueur.cpp" />
@@ -109,8 +111,9 @@
     <ClInclude Include="Controleur.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Drawable.h" />
+    <ClInclude Include="Dessinable.h" />
     <ClInclude Include="Joueur.h" />
+    <ClInclude Include="deplaceable.h" />
     <ClInclude Include="PiegeImmobile.h" />
     <ClInclude Include="PiegeMobile.h" />
     <ClInclude Include="Scene.h" />

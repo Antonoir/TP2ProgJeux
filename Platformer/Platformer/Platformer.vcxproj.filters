@@ -129,6 +129,12 @@
     <ClCompile Include="SceneCreerCompte.cpp">
       <Filter>Fichiers sources\Menu\scene</Filter>
     </ClCompile>
+    <ClCompile Include="dessinable.cpp">
+      <Filter>Fichiers sources\drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="deplaceable.cpp">
+      <Filter>Fichiers sources\drawable\Movable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -188,8 +194,11 @@
     <ClInclude Include="SceneCreerCompte.h">
       <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
     </ClInclude>
-    <ClInclude Include="Drawable.h">
+    <ClInclude Include="Dessinable.h">
       <Filter>Fichiers d%27en-tête\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="deplaceable.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
