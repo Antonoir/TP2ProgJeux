@@ -1,16 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "deplaceable.h"
 
-using namespace sf;
-
-class Enemy
+class Enemy: public Deplaceable
 {
 private:
-	Vector2f position;
 	const int type;
+	int posX;
+	int posY;
 public:
-	Enemy(const float posX, const float posY, const int type);
+	Enemy(int posX, int posY, const int type);
 	~Enemy();
+	virtual void Update() = 0;
+	virtual void Draw(sf::RenderWindow mainwin) = 0;
+
 	
 	
 };

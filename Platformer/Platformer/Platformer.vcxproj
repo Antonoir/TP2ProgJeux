@@ -88,7 +88,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Aborigenes.cpp" />
+    <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="Controleur.cpp" />
     <ClCompile Include="deplaceable.cpp" />
     <ClCompile Include="dessinable.cpp" />
@@ -96,7 +96,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Joueur.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PiegeImmobile.cpp" />
     <ClCompile Include="PiegeMobile.cpp" />
     <ClCompile Include="SceneCreerCompte.cpp" />
     <ClCompile Include="SceneEffacerCompte.cpp" />
@@ -109,14 +108,13 @@
     <ClCompile Include="Tuile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aborigenes.h" />
+    <ClInclude Include="SpaceInvaders.h" />
     <ClInclude Include="Controleur.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Dessinable.h" />
     <ClInclude Include="Joueur.h" />
     <ClInclude Include="deplaceable.h" />
-    <ClInclude Include="PiegeImmobile.h" />
     <ClInclude Include="PiegeMobile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneCreerCompte.h" />
@@ -128,9 +126,8 @@
     <ClInclude Include="SceneTitre.h" />
     <ClInclude Include="Textbox.h" />
     <ClInclude Include="Tuile.h" />
-    <ClInclude Include="UsineAborigenes.h" />
+    <ClInclude Include="UsineSpaceInvaders.h" />
     <ClInclude Include="UsineEnemy.h" />
-    <ClInclude Include="UsinePiegeImmobile.h" />
     <ClInclude Include="UsinePiegeMobile.h" />
   </ItemGroup>
   <ItemGroup>

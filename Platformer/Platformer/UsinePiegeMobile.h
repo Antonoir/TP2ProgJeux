@@ -5,10 +5,9 @@
 class UsinePiegeMobile : public UsineEnemy
 {
 public:
-	Enemy* fabriquerEnemy()
+	Enemy* fabriquerEnemy(int x, int y, const int type)
 	{
-		Enemy* mobile = new PiegeMobile(position.x, position.y, MOBILE);
+		Enemy* mobile = new PiegeMobile(x,y,MOBILE);
 	}
-private:
-	Vector2f position;
+	
 };

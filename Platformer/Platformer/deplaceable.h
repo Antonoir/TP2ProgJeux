@@ -1,6 +1,7 @@
 #pragma once
 #include "Dessinable.h"
-#include "Enemy.h"
+
+class Enemy;
 
 class Deplaceable : public Dessinable
 {

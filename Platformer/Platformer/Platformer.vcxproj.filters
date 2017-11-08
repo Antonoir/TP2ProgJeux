@@ -90,17 +90,11 @@
     <ClCompile Include="Game.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Aborigenes.cpp">
-      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
-    </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
     <ClCompile Include="Joueur.cpp">
       <Filter>Fichiers sources\drawable\Movable</Filter>
-    </ClCompile>
-    <ClCompile Include="PiegeImmobile.cpp">
-      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
     <ClCompile Include="PiegeMobile.cpp">
       <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
@@ -141,6 +135,9 @@
     <ClCompile Include="deplaceable.cpp">
       <Filter>Fichiers sources\drawable\Movable</Filter>
     </ClCompile>
+    <ClCompile Include="SpaceInvaders.cpp">
+      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -170,22 +167,10 @@
     <ClInclude Include="Enemy.h">
       <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
     </ClInclude>
-    <ClInclude Include="Aborigenes.h">
-      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
-    </ClInclude>
-    <ClInclude Include="PiegeImmobile.h">
-      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
-    </ClInclude>
     <ClInclude Include="PiegeMobile.h">
       <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
     </ClInclude>
-    <ClInclude Include="UsineAborigenes.h">
-      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
-    </ClInclude>
     <ClInclude Include="UsineEnemy.h">
-      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
-    </ClInclude>
-    <ClInclude Include="UsinePiegeImmobile.h">
       <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
     </ClInclude>
     <ClInclude Include="UsinePiegeMobile.h">
@@ -211,6 +196,12 @@
     </ClInclude>
     <ClInclude Include="deplaceable.h">
       <Filter>Fichiers d%27en-tête\Drawable\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceInvaders.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
+    </ClInclude>
+    <ClInclude Include="UsineSpaceInvaders.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

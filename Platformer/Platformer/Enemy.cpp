@@ -1,10 +1,9 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const float posX, const float posY, const int type)
-	:type(type)
+Enemy::Enemy(int posX, int posY, const int type)
+	:Deplaceable(posX,posY,0.f),type(0)
 {
-	position.x = posX;
-	position.y = posY;
+
 }
 
 Enemy::~Enemy()
