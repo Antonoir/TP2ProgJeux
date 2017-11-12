@@ -1,6 +1,10 @@
 #include "Controleur.h"
 #include <string>
 #include <ctype.h>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+
 namespace platformer
 {
 	Controleur *Controleur::instance = nullptr;
@@ -55,24 +59,29 @@ namespace platformer
 		}
 	}
 	
-	bool Controleur::requeteUserName(Textbox username)
+	bool Controleur::requeteUserName(Textbox username,Textbox password)
 	{
-		bool valide = false;
-		if (username.getTexte() == "antoine")
+		std::ifstream user("Assets\\Account\\User.txt");
+		if (!user.is_open())
 		{
-			valide = true;
+			return false;
 		}
-		return valide;
-	}
-	
-	bool Controleur::requetePassword(Textbox password)
-	{
-		bool valide = false;
-		if (password.getTexte() == "password")
+		std::string line;
+		while(std::getline(user,line))
 		{
-			valide = true;
+			std::string usernamestr;
+			std::string passwordstr;
+			std::stringstream elem(line);
+			
+			elem >> usernamestr >> passwordstr;
+			if (username.getTexte() == usernamestr && password.getTexte() == passwordstr)
+			{
+				return true;
+			}
+
 		}
-		return valide;
+
+		return false;
 	}
 
 	bool Controleur::requeteNickNameCompte(Textbox nickname)
@@ -200,5 +209,40 @@ namespace platformer
 			}
 		}
 		return valide;
+	}
+	bool Controleur::requeteCreerCompte(const Textbox& textusername, const Textbox& textpassword, const Textbox& textfirstname, const Textbox& textlastname, const Textbox& textemail)
+	{
+		std::ofstream userWrite("Assets\\Account\\User.txt", std::ios::app);
+		std::ifstream userRead("Assets\\Account\\User.txt");
+		if (!userRead.is_open())
+		{
+			return false;
+		}
+		std::string textusernamestr, textpasswordstr, textfirstnamestr, textlastnamestr, textemailstr;
+		textusernamestr = textusername.getTexte();
+		textpasswordstr = textpassword.getTexte();
+		textfirstnamestr = textfirstname.getTexte();
+		textlastnamestr = textlastname.getTexte();
+		textemailstr = textemail.getTexte();
+
+
+		if (requeteNickNameCompte(textusername))
+		{
+			if (requetePasswordCompte(textpassword))
+			{
+				if (requeteNameCompte(textfirstname))
+				{
+					if (requeteNameCompte(textlastname))
+					{
+						if (requeteEmailCompte(textemail))
+						{
+							userWrite<< std::endl << textusernamestr << " " << textpasswordstr << " " << textlastnamestr << " " << textfirstnamestr << " " << textemailstr;
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 }

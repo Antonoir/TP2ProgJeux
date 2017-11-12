@@ -30,7 +30,7 @@ namespace platformer
 		Text firstname;
 		Text email;
 
-		Scene::scenes sceneActive;
+		Scene::scenes sceneActive1;
 		Textbox textboxNickName;
 		Textbox textboxPassword;
 		Textbox textboxName;

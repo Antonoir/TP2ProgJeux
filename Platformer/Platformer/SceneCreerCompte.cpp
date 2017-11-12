@@ -163,8 +163,8 @@ void SceneCreerCompte::getInputs()
 		if (event.type == Event::KeyPressed && textboxActif == nullptr)
 		{
 			isRunning = false;
-			sceneActive = Controleur::getInstance()->requeteChangementScene();
-			transitionVersScene = sceneActive;
+			sceneActive1 = Controleur::getInstance()->requeteChangementScene();
+			transitionVersScene = sceneActive1;
 		}
 
 		if (event.type == Event::KeyPressed && textboxActif != nullptr)
@@ -176,15 +176,14 @@ void SceneCreerCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword) && Controleur::getInstance()->requeteNameCompte(textboxName) && Controleur::getInstance()->requeteNameCompte(textboxFirstName) && Controleur::getInstance()->requeteEmailCompte(textboxEmail))
+				if (!Controleur::getInstance()->requeteCreerCompte(textboxNickName,textboxPassword,textboxName, textboxFirstName, textboxEmail))
 				{
-					compteValide = true;
+					sceneActive1 = Scene::scenes::CREER;
+					transitionVersScene = sceneActive1;
 				}
-
 				else
 				{
-					//On affiche notre erreur.
-					textboxErreur.insererTexte("Mauvais nickname, motdepasse, nom, prenom ou email entrez-en un bon!");
+					transitionVersScene = Scene::scenes::MENUPRINCIPALE;
 				}
 
 			}

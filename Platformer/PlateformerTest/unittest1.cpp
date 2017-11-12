@@ -19,30 +19,30 @@ namespace ProjetSFMLTest
 		TEST_METHOD(TestUsernameValide)
 		{			
 			Textbox username;
-			username.insererTexte("antoine");
-			Assert::IsTrue(Controleur::getInstance()->requeteUserName(username));
+			Textbox password;
+			username.insererTexte("Zoro9968");
+			password.insererTexte("Pa55w*rd");
+			Assert::IsTrue(Controleur::getInstance()->requeteUserName(username,password));
 		}
 
-		TEST_METHOD(TestUsernameInvalide)
+		TEST_METHOD(TestUsernameInvalide1)
 		{
 			Textbox username;
-			username.insererTexte("antoines");
-			Assert::IsFalse(Controleur::getInstance()->requeteUserName(username));
-		}
-
-		TEST_METHOD(TestPasswordValide)
-		{
 			Textbox password;
+			username.insererTexte("Zoro9968");
 			password.insererTexte("password");
-			Assert::IsTrue(Controleur::getInstance()->requetePassword(password));
+			Assert::IsFalse(Controleur::getInstance()->requeteUserName(username,password));
 		}
 
-		TEST_METHOD(TestPasswordInvalide)
+		TEST_METHOD(TestUsernameInvalide2)
 		{
+			Textbox username;
 			Textbox password;
-			password.insererTexte("passwordsdf");
-			Assert::IsFalse(Controleur::getInstance()->requetePassword(password));
+			username.insererTexte("antoine");
+			password.insererTexte("Pa55w*rd");
+			Assert::IsFalse(Controleur::getInstance()->requeteUserName(username, password));
 		}
+
 
 		TEST_METHOD(TestNicknameValide)
 		{

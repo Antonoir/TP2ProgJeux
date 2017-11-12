@@ -222,7 +222,7 @@ void SceneModifierCompte::draw()
 	mainWin->draw(instruction);
 	mainWin->draw(nickname);
 	mainWin->draw(password);
-	if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePassword(textboxPassword))
+	if (Controleur::getInstance()->requeteUserName(textboxNickName,textboxPassword))
 	{
 		mainWin->draw(name);
 		mainWin->draw(firstname);

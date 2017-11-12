@@ -17,6 +17,7 @@ namespace platformer
 
 		scenes run();
 		bool init(RenderWindow * const window);
+	    bool erreurText=false;
 		void getInputs();
 		void update();
 		void draw();
@@ -28,8 +29,7 @@ namespace platformer
 
 		Scene::scenes sceneActive;
 		Textbox textboxUserName;
-		Textbox textboxPassword;
-		Textbox textboxErreur; // Ce textbox agit plutôt comme un messagebox.
+		Textbox textboxPassword; 
 		Font font;
 		Text instruction;
 

@@ -41,7 +41,6 @@ bool SceneTitre::init(RenderWindow * const window)
 	//par rapport au fond d'écran
 	textboxUserName.init(480, 24, Vector2f(430, 320), font);
 	textboxPassword.init(480, 24, Vector2f(430, 360), font);
-	textboxErreur.initInfo(Vector2f(430, 290), font, true);
 
 	this->mainWin = window;
 	isRunning = true;
@@ -75,7 +74,6 @@ void SceneTitre::getInputs()
 				textboxPassword.deSelectionner();
 				textboxActif = &textboxUserName; //Ce textbox devient actif
 				textboxUserName.selectionner();  //on l'affiche comme étant sélectionné
-				textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 			}
 
 			else if (textboxPassword.touche(Mouse::getPosition(*mainWin)))
@@ -83,7 +81,6 @@ void SceneTitre::getInputs()
 				textboxUserName.deSelectionner();
 				textboxActif = &textboxPassword; //Ce textbox devient actif
 				textboxPassword.selectionner();  //on l'affiche comme étant sélectionné
-				textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 			}
 			else
 			{
@@ -113,16 +110,17 @@ void SceneTitre::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteUserName(textboxUserName) && Controleur::getInstance()->requetePassword(textboxPassword))
+				if (Controleur::getInstance()->requeteUserName(textboxUserName,textboxPassword))
 				{
 					sceneActive = Scene::scenes::NIVEAU1;
 					transitionVersScene = sceneActive;
 				}
 				
-				else
+				else if(Controleur::getInstance()->requeteUserName(textboxUserName,textboxPassword)==false)
 				{
-					//On affiche notre erreur.
-					textboxErreur.insererTexte("Mauvais username ou Mauvais mot de passe, entrez-en un bon!");
+					//On affiche notre erreur.	
+					sceneActive = Scene::scenes::TITRE;
+					transitionVersScene = sceneActive;
 				}
 
 			}
@@ -159,7 +157,6 @@ void SceneTitre::draw()
 	mainWin->draw(ecranTitre);
 	mainWin->draw(instruction);
 	textboxUserName.dessiner(mainWin);
-	textboxPassword.dessiner(mainWin);
-	textboxErreur.dessiner(mainWin);
+	textboxPassword.dessiner(mainWin);	
 	mainWin->display();
 }
