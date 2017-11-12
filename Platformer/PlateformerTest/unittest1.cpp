@@ -173,7 +173,7 @@ namespace ProjetSFMLTest
 		TEST_METHOD(TestEmailValide2)
 		{
 			Textbox email;
-			email.insererTexte("titoine9912@hotmail.ca");
+			email.insererTexte("titoine9912@hotmail.ca.qc");
 			Assert::IsTrue(Controleur::getInstance()->requeteEmailCompte(email));
 		}
 

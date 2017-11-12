@@ -48,3 +48,9 @@ void Joueur::move(const int direction)
 		setPosition(limiteDroite, getPosition().y);
 	}
 }
+
+const bool Joueur::EntityCollider(Vector2f enemyPosition)
+{
+
+	return false;
+}
