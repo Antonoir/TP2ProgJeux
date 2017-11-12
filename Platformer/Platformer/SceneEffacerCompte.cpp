@@ -60,6 +60,7 @@ bool SceneEffacerCompte::init(RenderWindow * const window)
 	password.setString("password");
 
 	return true;
+	//test
 }
 
 void SceneEffacerCompte::getInputs()
