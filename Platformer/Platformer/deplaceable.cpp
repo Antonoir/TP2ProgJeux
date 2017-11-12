@@ -45,7 +45,3 @@ void Deplaceable::Jump()
 	++inAirCounter;
 }
 
-const bool Deplaceable::EntityCollider(Enemy& enemy)
-{
-	return false;
-}

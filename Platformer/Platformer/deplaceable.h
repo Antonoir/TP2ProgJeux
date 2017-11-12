@@ -14,7 +14,7 @@ protected:
 	void Jump();
 
 	
-	const bool EntityCollider(Enemy& enemy); //TODO
+
 private:
 	short inAirCounter;
 	bool isAirborn;
