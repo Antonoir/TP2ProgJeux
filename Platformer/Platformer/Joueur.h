@@ -36,6 +36,8 @@ namespace platformer
 		Texture texture;
 
 		IntRect persoRect;
+		//informations en constante car toute les tuiles sont en 32x32 donc refaire le calcul serait inutile
+		const float radius32x32 = 23.0f;
 		float vitesse = 3;
 		float limiteGauche;
 		float limiteDroite;

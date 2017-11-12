@@ -51,6 +51,14 @@ void Joueur::move(const int direction)
 
 const bool Joueur::EntityCollider(Vector2f enemyPosition)
 {
+	float ligneX = this->getPosition().x - enemyPosition.x;
+	float ligneY = this->getPosition().y - enemyPosition.y;
 
+	float distance = sqrt(ligneX * ligneX + ligneY * ligneY);
+
+	if (distance < 2 * radius32x32)
+	{
+		return true;
+	}
 	return false;
 }
