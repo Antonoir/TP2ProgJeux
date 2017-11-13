@@ -31,7 +31,7 @@ bool SceneNiveau1::init(RenderWindow * const window)
 
 	sf::IntRect visionRect(0, 0, 32, 32);
 
-	if (!SceneNiveau1::Create(3))
+	if (!SceneNiveau1::Create(1))
 		createMapInit = false;
 	joueur.SetSpawnPosition(positionEntrance);
 
