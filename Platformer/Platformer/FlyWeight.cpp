@@ -4,7 +4,7 @@ using namespace sf;
 
 FlyWeight::FlyWeight()
 {
-	if(terrainTexture.loadFromFile("Assets\\Sprites\\Terrain.png"))
+	if (terrainTexture.loadFromFile("Assets\\Sprites\\Terrain.png"))
 		terrainSprite.setTexture(terrainTexture);
 	if (enemyTexture.loadFromFile("Assets\\Sprites\\Enemy.png"))
 		enemySprite.setTexture(enemyTexture);

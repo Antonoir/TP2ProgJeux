@@ -31,7 +31,7 @@ bool SceneNiveau1::init(RenderWindow * const window)
 
 	sf::IntRect visionRect(0, 0, 32, 32);
 
-	if (!SceneNiveau1::Create(1))
+	if (!SceneNiveau1::Create(2))
 		createMapInit = false;
 	joueur.SetSpawnPosition(positionEntrance);
 
@@ -47,7 +47,7 @@ void SceneNiveau1::getInputs()
 	isSpacePressed = false;
 	isLeftPressed = false;
 	isRightPressed = false;
-	
+
 	while (mainWin->pollEvent(event))
 	{
 		//x sur la fenêtre
@@ -80,7 +80,7 @@ void SceneNiveau1::getInputs()
 
 void SceneNiveau1::update()
 {
-	if(isLeftPressed || isRightPressed || isSpacePressed)
+	if (isLeftPressed || isRightPressed || isSpacePressed)
 		joueur.Update(isSpacePressed, isRightPressed, isLeftPressed);
 }
 
@@ -89,11 +89,15 @@ void SceneNiveau1::draw()
 {
 	//draw la map
 	mainWin->clear();
+
+
 	for (int i = 0; i < NOMBRE_TUILES_X*NOMBRE_TUILES_Y; ++i)
 		terrainTuile[i]->Draw(*mainWin, sprites.GetTerrainSprite(), terrainTuile[i]->GetIntRect());
 
 	//draw le joueur
-	joueur.Draw(*mainWin, sprites.GetJoueurSprite(), joueur.GetCurrentRect());
+	joueur.Draw(*mainWin, sprites.GetJoueurSprite(), joueur.GetIntRect());
+
+
 	mainWin->display();
 }
 

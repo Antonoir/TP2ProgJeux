@@ -25,19 +25,31 @@ namespace platformer
 	public:
 		Joueur();
 		~Joueur();
-		void Update(const bool, const bool, const bool);
+		void Update(bool, bool, bool);
+		//(système collision avec ennemie)nous l'aurions passez en boite de collision carré mais par manque connaissance sur le fonctionnement nous avons remis à plus tard
 		const bool EntityCollider(sf::Vector2f EnemyPosition);
-		sf::IntRect GetCurrentRect();
+		const sf::IntRect GetIntRect();
+
 
 	private:
 		static const int TAILLE_RECT = 32;
-		sf::IntRect persoRect;
-		short frameCtr;
+		const int GRAVITY_FORCE = -3; //gravity
+		const short FRAME_BY_ANIMATION_STEP = 10;
+		//(radius)informations en constante car toute les tuiles sont en 32x32 donc refaire le calcul serait inutile 
+		const float RADIUS_32x32 = 20.0f;
 
-		//informations en constante car toute les tuiles sont en 32x32 donc refaire le calcul serait inutile
-		const float radius32x32 = 23.0f;
-		const float vitesse = 7;
-		const int gravityForce = -4; //gravity
+		void Jump(int);
+		void LetGravityDoItsJob();
+
+		sf::IntRect rectTab[2][7];
+		short leftCtr;
+		short rightCtr;
+		short jumpCharger;
+		short currentRectPos1;
+		short currentRectPos2;
+		bool airborn;
+
+
 	};
 }
 

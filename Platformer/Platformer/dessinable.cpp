@@ -8,7 +8,7 @@ Dessinable::Dessinable(int x, int y)
 	position.y = y;
 }
 
-void Dessinable::Draw(RenderWindow& window, Sprite& sprite, const IntRect rect)
+void Dessinable::Draw(RenderWindow& window, Sprite& sprite, IntRect rect)
 {
 	AssignSpritePosition(sprite);
 	sprite.setTextureRect(rect);
