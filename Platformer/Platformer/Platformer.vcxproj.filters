@@ -185,9 +185,6 @@
     <ClInclude Include="UsinePiegeMobile.h">
       <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
     </ClInclude>
-    <ClInclude Include="Joueur.h">
-      <Filter>Fichiers d%27en-tête\Drawable\Movable</Filter>
-    </ClInclude>
     <ClInclude Include="Tuile.h">
       <Filter>Fichiers d%27en-tête\Drawable</Filter>
     </ClInclude>
@@ -220,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="ModifCompte.h">
       <Filter>Fichiers d%27en-tête\Menu\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Joueur.h">
+      <Filter>Fichiers d%27en-tête\Drawable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -371,5 +371,6 @@
     <None Include="Ressources\Sounds\Powerup.ogg">
       <Filter>Fichiers de ressources\Sounds</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
