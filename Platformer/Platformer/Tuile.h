@@ -15,6 +15,7 @@ class Tuile : public Dessinable
 {
 public:
 	Tuile(int posX, int posY, blocType typet);
+	blocType GetType();
 	sf::IntRect GetIntRect() const;
 private:
 	blocType type;

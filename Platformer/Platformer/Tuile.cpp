@@ -7,6 +7,11 @@ Tuile::Tuile(int posX, int posY, blocType typet) :Dessinable(posX, posY)
 	type = typet;
 }
 
+blocType Tuile::GetType()
+{
+	return type;
+}
+
 IntRect Tuile::GetIntRect() const
 {
 	switch (type)

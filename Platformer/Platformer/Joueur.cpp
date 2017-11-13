@@ -4,7 +4,7 @@ using namespace platformer;
 using namespace sf;
 
 Joueur::Joueur() :
-	Deplaceable(64, 64, 3)//la vraie position est attribuée dans le Init() de la scene.
+	Deplaceable(64, 64, 5)//la vraie position est attribuée dans le Init() de la scene.
 					 /*la vitesse du joueur du joueur est hardcode car il ne voulait rien savoir d'une constante privée(ne fonctionnait pas apres plusieurs
 					 minute des test et un define ne semblait pas fonctionner jai donc préféré respecter l'encaspsulation plutot qu'une constante)*/
 {
@@ -14,7 +14,7 @@ Joueur::Joueur() :
 		for (int j = 0; j < 7; ++j)
 		{
 			//Dans l'ordre :: marche1 || marche2 || marche3 || marche4 || preparationSaut || DebutSaut || Airborn
-			rectTab[i][j] = IntRect(i * 32, j * 32, TAILLE_RECT, TAILLE_RECT);
+			rectTab[i][j] = IntRect(j * 32, i * 32, TAILLE_RECT, TAILLE_RECT);
 		}
 	}
 
@@ -38,11 +38,9 @@ void Joueur::Update(bool spaceButton, bool rightButton, bool leftButton)
 
 	if (rightButton && !leftButton)
 	{
+		currentRectPos1 = 0;
 		MoveRight();
 		++rightCtr;
-
-
-		currentRectPos1 = 0;
 		if (rightCtr == FRAME_BY_ANIMATION_STEP)
 		{
 			rightCtr = 0;
@@ -56,13 +54,13 @@ void Joueur::Update(bool spaceButton, bool rightButton, bool leftButton)
 
 	if (!rightButton && leftButton)
 	{
+		currentRectPos1 = 1;
 		MoveLeft();
 		++leftCtr;
-		currentRectPos1 = 1;
 		if (leftCtr == FRAME_BY_ANIMATION_STEP)
 		{
 			leftCtr = 0;
-			++currentRectPos2; 
+			++currentRectPos2;
 			if(currentRectPos2 == 4)
 				currentRectPos2 = 0;
 		}
@@ -86,7 +84,7 @@ void Joueur::Jump(int charged)
 
 const IntRect Joueur::GetIntRect()
 {
-	return rectTab[currentRectPos2][currentRectPos1];
+	return rectTab[currentRectPos1][currentRectPos2];
 }
 
 

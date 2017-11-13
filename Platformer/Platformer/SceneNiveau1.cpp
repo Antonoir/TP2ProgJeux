@@ -31,7 +31,7 @@ bool SceneNiveau1::init(RenderWindow * const window)
 
 	sf::IntRect visionRect(0, 0, 32, 32);
 
-	if (!SceneNiveau1::Create(2))
+	if (!SceneNiveau1::Create(3))
 		createMapInit = false;
 	joueur.SetSpawnPosition(positionEntrance);
 
@@ -82,6 +82,8 @@ void SceneNiveau1::update()
 {
 	if (isLeftPressed || isRightPressed || isSpacePressed)
 		joueur.Update(isSpacePressed, isRightPressed, isLeftPressed);
+
+	joueur.SurfaceCollider(*terrainTuile);
 }
 
 
