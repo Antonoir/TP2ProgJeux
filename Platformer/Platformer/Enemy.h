@@ -13,7 +13,4 @@ public:
 	~Enemy();
 	virtual void Update() = 0;
 	virtual void Draw(sf::RenderWindow mainwin) = 0;
-
-	
-	
 };

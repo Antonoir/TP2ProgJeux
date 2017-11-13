@@ -8,10 +8,17 @@ Dessinable::Dessinable(int x, int y)
 	position.y = y;
 }
 
-void Dessinable::Draw(RenderWindow& window, Sprite& sprite)
+void Dessinable::Draw(RenderWindow& window, Sprite& sprite, const IntRect rect)
 {
 	AssignSpritePosition(sprite);
+	sprite.setTextureRect(rect);
 	window.draw(sprite);
+}
+
+void Dessinable::SetSpawnPosition(Vector2i spawnPos)
+{
+	position.x = spawnPos.x;
+	position.y = spawnPos.y;
 }
 
 void Dessinable::Move(int x, int y)

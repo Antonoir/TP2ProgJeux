@@ -1,58 +1,31 @@
 #include "Joueur.h"
 
 using namespace platformer;
+using namespace sf;
 
-Joueur::Joueur() : persoRect(0, 0, TAILLE_RECT, TAILLE_RECT)
+Joueur::Joueur() : Deplaceable(INT16_MAX, INT16_MAX, vitesse)//la vraie position est attribuée dans le Init() de la scene.
 {
+	persoRect = IntRect(0, 0, TAILLE_RECT, TAILLE_RECT);
 }
 
 Joueur::~Joueur()
 {
 }
 
-bool Joueur::init(const int limiteGauche, const int limiteDroite, const String texturePath)
+IntRect Joueur::GetCurrentRect()
 {
-	if (!texture.loadFromFile(texturePath))
-	{
-		return false;
-	}
-
-	setTexture(texture);
-	setTextureRect(persoRect);
-	setOrigin(TAILLE_RECT / 2, TAILLE_RECT /2);
-
-	this->limiteGauche = limiteGauche + TAILLE_RECT / 4;
-	this->limiteDroite = limiteDroite - TAILLE_RECT / 4;
-
-	return true;
+	return IntRect(0,0, TAILLE_RECT, TAILLE_RECT);
 }
 
-void Joueur::move(const int direction)
+void Joueur::Update(const bool spaceButton, const bool rightButton, const bool leftButton)
 {
-	if (direction == 1)
-	{
-		Sprite::move(vitesse, 0);
-	}
-	else if (direction == -1)
-	{
-		Sprite::move(-vitesse, 0);
-	}
-
-	//Test sur les limites de l'écran
-	if (getPosition().x < limiteGauche)
-	{
-		setPosition(limiteGauche, getPosition().y);
-	}
-	else if (getPosition().x > limiteDroite)
-	{
-		setPosition(limiteDroite, getPosition().y);
-	}
+	//frameCtr++;
 }
 
 const bool Joueur::EntityCollider(Vector2f enemyPosition)
 {
-	float ligneX = this->getPosition().x - enemyPosition.x;
-	float ligneY = this->getPosition().y - enemyPosition.y;
+	float ligneX = GetPosition().x - enemyPosition.x;
+	float ligneY = GetPosition().y - enemyPosition.y;
 
 	float distance = sqrt(ligneX * ligneX + ligneY * ligneY);
 

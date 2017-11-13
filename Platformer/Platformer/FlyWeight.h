@@ -5,13 +5,17 @@ class FlyWeight
 {
 public:
 	FlyWeight();
+	sf::Sprite& GetTerrainSprite();
+	sf::Sprite& GetEnemySprite();
+	sf::Sprite& GetJoueurSprite();
+	sf::Sprite& GetCollectibleSprite();
 private:
 	sf::Texture terrainTexture;
 	sf::Texture enemyTexture;
 	sf::Texture joueurTexture;
 	sf::Texture collectibleTexture;
-	sf::Sprite terrainTextureSprite;
-	sf::Sprite enemyTextureSprite;
-	sf::Sprite joueurTextureSprite;
-	sf::Sprite collectibleTextureSprite;
+	sf::Sprite terrainSprite;
+	sf::Sprite enemySprite;
+	sf::Sprite joueurSprite;
+	sf::Sprite collectibleSprite;
 };

@@ -2,24 +2,26 @@
 
 using namespace sf;
 
-Tuile::Tuile(int posX, int posY, blocType typet)
+Tuile::Tuile(int posX, int posY, blocType typet) :Dessinable(posX, posY)
 {
-	position.x = posX;
-	position.y = posY;
 	type = typet;
 }
 
-blocType Tuile::GetType() const
+IntRect Tuile::GetIntRect() const
 {
-	return type;
-}
-
-int Tuile::GetX() const
-{
-	return position.x;
-}
-
-int Tuile::GetY() const
-{
-	return position.y;
+	switch (type)
+	{
+	case blocType::sky:
+		return IntRect(32, 0, 32, 32);
+	case blocType::grass:
+		return IntRect(0, 0, 32, 32);
+	case blocType::dirt:
+		return IntRect(64, 0, 32, 32);
+	case blocType::entrance:
+		return IntRect(0, 32, 32, 32);
+	case blocType::lowerFlag:
+		return IntRect(64, 32, 32, 32);
+	case blocType::upperFlag:
+		return IntRect(32, 32, 32, 32);
+	}
 }

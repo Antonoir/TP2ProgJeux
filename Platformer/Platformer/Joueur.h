@@ -1,8 +1,6 @@
 #pragma once
+#include "deplaceable.h"
 
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
 
 /// <summary>
 /// Squelette d'une classe joueur.  Y a pas grand chose ici, mais c'est tout de même la sprite
@@ -22,25 +20,24 @@ using namespace sf;
 /// </summary>
 namespace platformer
 {
-	class Joueur : public Sprite
+	class Joueur : public Deplaceable
 	{
 	public:
 		Joueur();
 		~Joueur();
-		void move(const int direction);
-		bool init(const int limiteGauche, const int limiteDroite, const String texturePath);
-		const bool EntityCollider(Vector2f EnemyPosition); //TODO
+		void Update(const bool, const bool, const bool);
+		const bool EntityCollider(sf::Vector2f EnemyPosition);
+		sf::IntRect GetCurrentRect();
+
 	private:
-		static const int TAILLE_RECT = 64;
+		static const int TAILLE_RECT = 32;
+		sf::IntRect persoRect;
+		short frameCtr;
 
-		Texture texture;
-
-		IntRect persoRect;
 		//informations en constante car toute les tuiles sont en 32x32 donc refaire le calcul serait inutile
 		const float radius32x32 = 23.0f;
-		float vitesse = 3;
-		float limiteGauche;
-		float limiteDroite;
+		const float vitesse = 7;
+		const int gravityForce = -4; //gravity
 	};
 }
 

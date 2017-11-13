@@ -1,15 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Tuile.h"
+class Tuile;
 
 class Dessinable
 {
+public:
+	sf::Vector2f GetPosition();
+	void SetSpawnPosition(sf::Vector2i);
+	void Draw(sf::RenderWindow&, sf::Sprite&, const sf::IntRect);
 protected:
 	Dessinable(int x, int y);
-
-	void Draw(sf::RenderWindow&, sf::Sprite&);
 	void Move(int x, int y);
-	sf::Vector2f GetPosition();
 	const bool SurfaceCollider(Tuile* tableTuile[]); //TODO
 
 private:

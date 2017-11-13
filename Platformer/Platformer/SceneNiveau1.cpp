@@ -11,7 +11,7 @@ SceneNiveau1::SceneNiveau1()
 SceneNiveau1::~SceneNiveau1()
 {
 	for (int i = 0; i < NOMBRE_TUILES_X * NOMBRE_TUILES_Y; ++i)
-		delete tableTuile[i];
+		delete terrainTuile[i];
 }
 
 Scene::scenes SceneNiveau1::run()
@@ -30,18 +30,10 @@ bool SceneNiveau1::init(RenderWindow * const window)
 {
 
 	sf::IntRect visionRect(0, 0, 32, 32);
-	if (!spritesheetTexture.loadFromFile("Assets\\Sprites\\spritev1.png"))
-		return false;
-	spritesheet.setTexture(spritesheetTexture);
-
-	if (!joueur.init(0, window->getSize().x, "Ressources\\Sprites\\Player\\Player.png"))
-		return false;
 
 	if (!SceneNiveau1::Create(1))
-		return false;
-
-	//Position arbitraire pour le joueur en x, pas arbitraire en y (sur le plancher)
-	joueur.setPosition(10, 608);
+		createMapInit = false;
+	joueur.SetSpawnPosition(positionEntrance);
 
 	this->mainWin = window;
 	isRunning = true;
@@ -51,6 +43,11 @@ bool SceneNiveau1::init(RenderWindow * const window)
 
 void SceneNiveau1::getInputs()
 {
+	//reset commande joueur
+	isSpacePressed = false;
+	isLeftPressed = false;
+	isRightPressed = false;
+	
 	while (mainWin->pollEvent(event))
 	{
 		//x sur la fenêtre
@@ -72,18 +69,32 @@ void SceneNiveau1::getInputs()
 		}
 	}
 
-	interfaceCommande = 0;
-
 	//Méthode binaire: appuyer à gauche et à droite sumultanément va donner 3, et le personnage ne se dépalcera alors pas.
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-	{
-		interfaceCommande |= 1;
-	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		isLeftPressed = true;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		isRightPressed = true;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		isSpacePressed = true;
+}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-	{
-		interfaceCommande |= 2;
-	}
+void SceneNiveau1::update()
+{
+	if(isLeftPressed || isRightPressed || isSpacePressed)
+		joueur.Update(isSpacePressed, isRightPressed, isLeftPressed);
+}
+
+
+void SceneNiveau1::draw()
+{
+	//draw la map
+	mainWin->clear();
+	for (int i = 0; i < NOMBRE_TUILES_X*NOMBRE_TUILES_Y; ++i)
+		terrainTuile[i]->Draw(*mainWin, sprites.GetTerrainSprite(), terrainTuile[i]->GetIntRect());
+
+	//draw le joueur
+	joueur.Draw(*mainWin, sprites.GetJoueurSprite(), joueur.GetCurrentRect());
+	mainWin->display();
 }
 
 //créer la map à partir d'un fichier texte grace à un talbeau de tuile.
@@ -106,7 +117,9 @@ bool SceneNiveau1::Create(int mapNumber)
 
 		while (elem >> codeType)
 		{
-			tableTuile[ctr] = new Tuile(ctrPosX, ctrPosY, getType(codeType));
+			if (codeType == 03)
+				positionEntrance = Vector2i(ctrPosX, ctrPosY);
+			terrainTuile[ctr] = new Tuile(ctrPosX, ctrPosY, getType(codeType));
 			ctr++;
 			if (ctr % NOMBRE_TUILES_X == 0)
 			{
@@ -132,51 +145,11 @@ blocType SceneNiveau1::getType(int codeType)
 		break;
 	case 2: return blocType::dirt;
 		break;
+	case 3: return blocType::entrance;
+		break;
+	case 4: return blocType::lowerFlag;
+		break;
+	case 5: return blocType::upperFlag;
+		break;
 	}
 }
-
-void SceneNiveau1::update()
-{
-	if (interfaceCommande == 1)
-	{
-		joueur.move(-1);
-	}
-	else if (interfaceCommande == 2)
-	{
-		joueur.move(1);
-	}
-}
-
-
-//grass  (0,0,32,32)
-//sky		(32,0,32,32)
-//dirt	(64,0,32,32)
-void SceneNiveau1::draw()
-{
-	mainWin->clear();
-	for (int i = 0; i < NOMBRE_TUILES_X*NOMBRE_TUILES_Y; ++i)
-	{
-		switch (tableTuile[i]->GetType())
-		{
-		case blocType::sky:
-			spritesheet.setTextureRect(IntRect(32, 0, 32, 32));
-			spritesheet.setPosition(tableTuile[i]->GetX(), tableTuile[i]->GetY());
-			mainWin->draw(spritesheet);
-			break;
-		case blocType::grass:
-			spritesheet.setTextureRect(IntRect(0, 0, 32, 32));
-			spritesheet.setPosition(tableTuile[i]->GetX(), tableTuile[i]->GetY());
-			mainWin->draw(spritesheet);
-			break;
-		case blocType::dirt:
-			spritesheet.setTextureRect(IntRect(64, 0, 32, 32));
-			spritesheet.setPosition(tableTuile[i]->GetX(), tableTuile[i]->GetY());
-			mainWin->draw(spritesheet);
-			break;
-		}
-	}
-
-	mainWin->draw(joueur);
-	mainWin->display();
-}
-

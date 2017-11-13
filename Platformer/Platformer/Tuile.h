@@ -1,21 +1,21 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Dessinable.h"
 
 enum blocType
 {
 	sky,
 	grass,
 	dirt,
+	entrance,
+	lowerFlag,
+	upperFlag,
 };
 
-class Tuile
+class Tuile : public Dessinable
 {
 public:
 	Tuile(int posX, int posY, blocType typet);
-	blocType GetType() const;
-	int GetX() const;
-	int GetY() const;
+	sf::IntRect GetIntRect() const;
 private:
-	sf::Vector2i position;
 	blocType type;
 };
