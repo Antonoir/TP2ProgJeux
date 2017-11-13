@@ -181,6 +181,7 @@
     <Font Include="Ressources\Fonts\Peric.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="Ressources\Sounds\ExitReached.ogg" />
     <None Include="Ressources\Sounds\GemCollected.ogg" />
     <None Include="Ressources\Sounds\MonsterKilled.ogg" />

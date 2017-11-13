@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "Tuile.h"
 #include "Joueur.h"
+#include "Enemy.h"
 #include "Game.h"
 #include "FlyWeight.h"
 
@@ -20,6 +21,7 @@ namespace platformer
 		scenes run();
 		bool init(RenderWindow * const window);
 		bool Create(int mapNumber);
+		bool CreateEnemy();
 		void getInputs();
 		void update();
 		void draw();
@@ -30,7 +32,7 @@ namespace platformer
 		sf::Vector2i positionEntrance;
 		blocType getType(int codeType);
 		Joueur joueur;
-
+		Enemy* tabEnemy[4];
 		bool createMapInit;
 		bool isSpacePressed;
 		bool isRightPressed;

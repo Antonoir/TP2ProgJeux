@@ -11,6 +11,4 @@ private:
 public:
 	Enemy(int posX, int posY, const int type);
 	~Enemy();
-	virtual void Update() = 0;
-	virtual void Draw(sf::RenderWindow mainwin) = 0;
 };

@@ -1,17 +1,22 @@
 #include "SceneNiveau1.h"
 #include <string.h>
+#include "PiegeMobile.h"
+#include "SpaceInvaders.h"
 
 using namespace platformer;
 using namespace std;
 
 SceneNiveau1::SceneNiveau1()
 {
+
 }
 
 SceneNiveau1::~SceneNiveau1()
 {
 	for (int i = 0; i < NOMBRE_TUILES_X * NOMBRE_TUILES_Y; ++i)
 		delete terrainTuile[i];
+	for (int i = 0; i < 4; ++i)
+		delete tabEnemy[i];
 }
 
 Scene::scenes SceneNiveau1::run()
@@ -30,8 +35,8 @@ bool SceneNiveau1::init(RenderWindow * const window)
 {
 
 	sf::IntRect visionRect(0, 0, 32, 32);
-
-	if (!SceneNiveau1::Create(2))
+	
+	if (!SceneNiveau1::Create(1))
 		createMapInit = false;
 	joueur.SetSpawnPosition(positionEntrance);
 
@@ -136,6 +141,37 @@ bool SceneNiveau1::Create(int mapNumber)
 	}
 
 	return true;
+}
+
+bool SceneNiveau1::CreateEnemy()
+{
+	int i = 0;
+	std::ifstream enemy("Assets\\Maps\\EnnemieMap1.txt");
+	if (!enemy.is_open())
+	{
+		return false;
+	}
+	std::string line;
+	while (std::getline(enemy, line))
+	{
+		int posx;
+		int posy;
+		int type;
+		std::stringstream elem(line);
+
+		elem >> posx >> posy >> type;
+		if (type == 0)
+		{
+			tabEnemy[i] = new PiegeMobile(posx, posy,0);
+			i++;
+	    }
+		if (type == 1)
+		{
+			tabEnemy[i] = new SpaceInvaders(posx, posy, 1);
+		}
+		return true;
+	}
+	return false;
 }
 
 //return le type de la tuile selon un nombre
