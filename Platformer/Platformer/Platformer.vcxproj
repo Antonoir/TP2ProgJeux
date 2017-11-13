@@ -89,6 +89,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="FlyWeight.cpp" />
     <ClCompile Include="SpaceInvaders.cpp" />
     <ClCompile Include="Controleur.cpp" />
     <ClCompile Include="deplaceable.cpp" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Tuile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FlyWeight.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="SpaceInvaders.h" />
     <ClInclude Include="Controleur.h" />
