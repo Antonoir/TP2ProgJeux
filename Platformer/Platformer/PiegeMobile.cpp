@@ -9,3 +9,20 @@ PiegeMobile::~PiegeMobile()
 {
 
 }
+
+void PiegeMobile::Update()
+{
+	if (this->GetPosition().x >= 0 && this->GetPosition().x <= 1280)
+	{
+		MoveLeft();
+		if (this->GetPosition().x == this->GetPosition().x-100)
+		{
+			MoveRight();
+		}
+		if (this->GetPosition().x == this->GetPosition().x+100)
+		{
+			MoveLeft();
+		}
+
+	}
+}

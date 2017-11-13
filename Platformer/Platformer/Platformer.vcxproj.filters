@@ -138,6 +138,9 @@
     <ClCompile Include="SpaceInvaders.cpp">
       <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
     </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Fichiers sources\drawable\Movable\Ennemie</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="UsineSpaceInvaders.h">
       <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie\Usine</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Fichiers d%27en-tête\Drawable\Movable\Ennemie</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
