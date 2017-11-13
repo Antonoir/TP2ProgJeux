@@ -58,6 +58,10 @@ namespace platformer
 		{
 			return Scene::scenes::MODIFIER;
 		}
+		else
+		{
+			return Scene::scenes::MENUPRINCIPALE;
+		}
 	}
 	void Controleur::requeteSupprimerCompte(Textbox username, Textbox password)
 	{
