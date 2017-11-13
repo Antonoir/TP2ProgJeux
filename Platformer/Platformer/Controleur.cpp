@@ -81,7 +81,7 @@ namespace platformer
 			}
 		}
 	}
-	void Controleur::requeteModifCompte(Textbox username,Textbox password, Textbox name, Textbox firstname, Textbox email)
+	bool Controleur::requeteModifCompte(Textbox username,Textbox password, Textbox name, Textbox firstname, Textbox email)
 	{
 		std::ifstream user("Assets\\Account\\User.txt");
 		if (!user.is_open())
@@ -93,17 +93,33 @@ namespace platformer
 		{
 			std::string usernamestr;
 			std::string passwordstr;
+			std::stringstream elem(line);
+			if (username.getTexte() == usernamestr && password.getTexte() == passwordstr)
+			{
+				return true;
+			}
+		}
+	}
+	void Controleur::requeteModifInfoCompte(Textbox& name, Textbox& firstname, Textbox& email)
+	{
+		std::ifstream user("Assets\\Account\\User.txt");
+		if (!user.is_open())
+		{
+			//on fait rien
+		}
+		std::string line;
+		while (std::getline(user, line))
+		{
 			std::string namestr;
 			std::string firstnamestr;
 			std::string emailstr;
 			std::stringstream elem(line);
-			if (username.getTexte() == usernamestr && password.getTexte() == passwordstr)
-			{
-				name.insererTexte(namestr);
-				firstname.insererTexte(firstnamestr);
-				email.insererTexte(emailstr);
-			}
+
+			name.insererTexte(namestr);
+			firstname.insererTexte(firstnamestr);
+			email.insererTexte(emailstr);
 		}
+
 	}
 	bool Controleur::requeteUserName(Textbox username,Textbox password)
 	{
@@ -290,5 +306,17 @@ namespace platformer
 			}
 		}
 		return false;
+	}
+	bool Controleur::requeteCreerModif(const Textbox& textfirstname, const Textbox& textlastname, const Textbox& textemail)
+	{
+		std::ofstream userWrite("Assets\\Account\\User.txt", std::ios::app);
+		std::ifstream userRead("Assets\\Account\\User.txt");
+		if (!userRead.is_open())
+		{
+			return false;
+		}
+		std::string textusernamestr, textpasswordstr, textfirstnamestr, textlastnamestr, textemailstr;
+		userWrite << std::endl << textusernamestr << " " << textpasswordstr << " " << textlastnamestr << " " << textfirstnamestr << " " << textemailstr;
+		return true;
 	}
 }

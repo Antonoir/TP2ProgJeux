@@ -1,19 +1,19 @@
 #include "Controleur.h"
-#include "SceneModifierCompte.h"
+#include "ModifCompte.h"
 
 using namespace platformer;
 
-SceneModifierCompte::SceneModifierCompte()
+ModifCompte::ModifCompte()
 {
 
 }
 
-SceneModifierCompte::~SceneModifierCompte()
+ModifCompte::~ModifCompte()
 {
 
 }
 
-Scene::scenes SceneModifierCompte::run()
+Scene::scenes ModifCompte::run()
 {
 	while (isRunning)
 	{
@@ -25,7 +25,7 @@ Scene::scenes SceneModifierCompte::run()
 	return transitionVersScene;
 }
 
-bool SceneModifierCompte::init(RenderWindow * const window)
+bool ModifCompte::init(RenderWindow * const window)
 {
 	if (!ecranModifierCompteT.loadFromFile("Ressources\\Sprites\\Title.png"))
 	{
@@ -39,12 +39,12 @@ bool SceneModifierCompte::init(RenderWindow * const window)
 
 	ecranModifierCompte.setTexture(ecranModifierCompteT);
 
-	textboxNickName.init(480, 24, Vector2f(650, 240), font);
-	textboxPassword.init(480, 24, Vector2f(650, 280), font);
+	//textboxNickName.init(480, 24, Vector2f(650, 240), font);
+	//textboxPassword.init(480, 24, Vector2f(650, 280), font);
 	textboxName.init(480, 24, Vector2f(650, 320), font);
 	textboxFirstName.init(480, 24, Vector2f(650, 360), font);
 	textboxEmail.init(480, 24, Vector2f(650, 400), font);
-
+	Controleur::getInstance()->requeteModifInfoCompte(textboxName, textboxFirstName, textboxEmail);
 
 	this->mainWin = window;
 	isRunning = true;
@@ -81,7 +81,7 @@ bool SceneModifierCompte::init(RenderWindow * const window)
 	return true;
 }
 
-void SceneModifierCompte::getInputs()
+void ModifCompte::getInputs()
 {
 	while (mainWin->pollEvent(event))
 	{
@@ -93,59 +93,54 @@ void SceneModifierCompte::getInputs()
 			transitionVersScene = Scene::scenes::SORTIE;
 		}
 
-		if (textboxNickName.touche(Mouse::getPosition(*mainWin)))
-		{
-			textboxPassword.deSelectionner();
-			textboxName.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxEmail.deSelectionner();
-			textboxActif = &textboxNickName; //Ce textbox devient actif
-			textboxNickName.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
-		}
+		//if (textboxNickName.touche(Mouse::getPosition(*mainWin)))
+		//{
+			//textboxPassword.deSelectionner();
+		//	textboxName.deSelectionner();
+		//	textboxFirstName.deSelectionner();
+		//	textboxEmail.deSelectionner();
+		//	textboxActif = &textboxNickName; //Ce textbox devient actif
+		//	textboxNickName.selectionner();  //on l'affiche comme étant sélectionné
+		//}
 
-		else if (textboxPassword.touche(Mouse::getPosition(*mainWin)))
-		{
-			textboxNickName.deSelectionner();
-			textboxName.deSelectionner();
-			textboxFirstName.deSelectionner();
-			textboxEmail.deSelectionner();
-			textboxActif = &textboxPassword; //Ce textbox devient actif
-			textboxPassword.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
-		}
+		//else if (textboxPassword.touche(Mouse::getPosition(*mainWin)))
+		//{
+		//	textboxNickName.deSelectionner();
+		//	textboxName.deSelectionner();
+		//	textboxFirstName.deSelectionner();
+		//	textboxEmail.deSelectionner();
+		//	textboxActif = &textboxPassword; //Ce textbox devient actif
+		//	textboxPassword.selectionner();  //on l'affiche comme étant sélectionné
+		//}
 
 		else if (textboxName.touche(Mouse::getPosition(*mainWin)))
 		{
-			textboxNickName.deSelectionner();
-			textboxPassword.deSelectionner();
+			//textboxNickName.deSelectionner();
+			//textboxPassword.deSelectionner();
 			textboxFirstName.deSelectionner();
 			textboxEmail.deSelectionner();
 			textboxActif = &textboxName; //Ce textbox devient actif
 			textboxName.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 		}
 
 		else if (textboxFirstName.touche(Mouse::getPosition(*mainWin)))
 		{
-			textboxNickName.deSelectionner();
-			textboxPassword.deSelectionner();
+			//textboxNickName.deSelectionner();
+			//textboxPassword.deSelectionner();
 			textboxName.deSelectionner();
 			textboxEmail.deSelectionner();
 			textboxActif = &textboxFirstName; //Ce textbox devient actif
 			textboxFirstName.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 		}
 
 		else if (textboxEmail.touche(Mouse::getPosition(*mainWin)))
 		{
-			textboxNickName.deSelectionner();
-			textboxPassword.deSelectionner();
+			//textboxNickName.deSelectionner();
+			//textboxPassword.deSelectionner();
 			textboxName.deSelectionner();
 			textboxFirstName.deSelectionner();
 			textboxActif = &textboxEmail; //Ce textbox devient actif
 			textboxEmail.selectionner();  //on l'affiche comme étant sélectionné
-			textboxErreur.insererTexte(""); //on efface le message d'erreur (optionnel, amis ça fait clean si on fait un nouvel essai)
 		}
 
 		else
@@ -153,8 +148,8 @@ void SceneModifierCompte::getInputs()
 			//Sinon aucun textbox actif
 			//Ce else devrait être dans toutes vos fenêtres où il n'y a pas de textbox.
 			textboxActif = nullptr;
-			textboxPassword.deSelectionner();
-			textboxNickName.deSelectionner();
+			//textboxPassword.deSelectionner();
+			//textboxNickName.deSelectionner();
 			textboxName.deSelectionner();
 			textboxFirstName.deSelectionner();
 			textboxEmail.deSelectionner();
@@ -175,16 +170,17 @@ void SceneModifierCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (!Controleur::getInstance()->requeteUserName(textboxNickName,textboxPassword) && Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
+				if(Controleur::getInstance()->requeteNameCompte(textboxName) && Controleur::getInstance()->requeteNameCompte(textboxFirstName) && Controleur::getInstance()->requeteEmailCompte(textboxEmail))
 				{
+					Controleur::getInstance()->requeteCreerModif(textboxFirstName, textboxName, textboxEmail);
 					transitionVersScene = Scene::scenes::MODIFIER;
 				}
 
-				else if(Controleur::getInstance()->requeteModifCompte(textboxNickName, textboxPassword, textboxName, textboxFirstName, textboxEmail))
+				else
 				{
 					compteValide = true;
-					transitionVersScene = Scene::scenes::MODIFINFO;
-					
+					Controleur::getInstance()->requeteModifCompte(textboxNickName, textboxPassword, textboxName, textboxFirstName, textboxEmail);
+					transitionVersScene = Scene::scenes::MODIFIER;
 				}
 
 			}
@@ -210,30 +206,22 @@ void SceneModifierCompte::getInputs()
 	backspaceActif = false;
 }
 
-void SceneModifierCompte::update()
+void ModifCompte::update()
 {
 
 }
 
-void SceneModifierCompte::draw()
+void ModifCompte::draw()
 {
 	mainWin->clear();
 	mainWin->draw(ecranModifierCompte);
 	mainWin->draw(instruction);
-	mainWin->draw(nickname);
-	mainWin->draw(password);
-	if (compteValide)
-	{
 		mainWin->draw(name);
 		mainWin->draw(firstname);
 		mainWin->draw(email);
 		textboxName.dessiner(mainWin);
 		textboxFirstName.dessiner(mainWin);
 		textboxEmail.dessiner(mainWin);
-	}
-	
-	textboxNickName.dessiner(mainWin);
-	textboxPassword.dessiner(mainWin);
 	textboxErreur.dessiner(mainWin);
 	mainWin->display();
 }

@@ -6,6 +6,7 @@
 #include "SceneCreerCompte.h"
 #include "SceneModifierCompte.h"
 #include "SceneEffacerCompte.h"
+#include "ModifCompte.h"
 
 using namespace platformer;
 using namespace sf;
@@ -68,6 +69,9 @@ int Game::run()
 				break;
 			case Scene::scenes::EFFACER:
 				sceneActive = new SceneEffacerCompte();
+				break;
+			case Scene::scenes::MODIFINFO:
+				sceneActive = new ModifCompte();
 				break;
 			}
 			

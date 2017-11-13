@@ -14,7 +14,7 @@ namespace platformer
 	{
 	public:
 		//Quand vos ajouterez des scènes, ajouter un enum ici
-		enum scenes {TITRE, NIVEAU1, SORTIE, MENUPRINCIPALE,GESTIONCOMPTE,SCORE,EFFACER,CREER,MODIFIER};
+		enum scenes {TITRE, NIVEAU1, SORTIE, MENUPRINCIPALE,GESTIONCOMPTE,SCORE,EFFACER,CREER,MODIFIER,MODIFINFO};
 		static const int NOMBRE_TUILES_X = 40;
 		static const int NOMBRE_TUILES_Y = 25;
 		static const int TAILLE_TUILES = 32;

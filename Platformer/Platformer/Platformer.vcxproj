@@ -88,6 +88,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ModifCompte.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="FlyWeight.cpp" />
     <ClCompile Include="SpaceInvaders.cpp" />
@@ -111,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FlyWeight.h" />
+    <ClInclude Include="ModifCompte.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="SpaceInvaders.h" />
     <ClInclude Include="Controleur.h" />
