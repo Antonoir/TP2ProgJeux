@@ -97,8 +97,7 @@ void SceneTitre::getInputs()
 		if (event.type == Event::KeyPressed && textboxActif ==nullptr)
 		{
 				isRunning = false;
-				sceneActive = Controleur::getInstance()->requeteChangementScene();
-				transitionVersScene = sceneActive;			
+				transitionVersScene = Controleur::getInstance()->requeteChangementScene();
 		}
 		
 		if (event.type == Event::KeyPressed && textboxActif != nullptr)
@@ -112,8 +111,7 @@ void SceneTitre::getInputs()
 				isRunning = false;
 				if (Controleur::getInstance()->requeteUserName(textboxUserName,textboxPassword))
 				{
-					sceneActive = Scene::scenes::NIVEAU1;
-					transitionVersScene = sceneActive;
+					transitionVersScene = Scene::scenes::NIVEAU1;
 				}
 				
 				else if(Controleur::getInstance()->requeteUserName(textboxUserName,textboxPassword)==false)

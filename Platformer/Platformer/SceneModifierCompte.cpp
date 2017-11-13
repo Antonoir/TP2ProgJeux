@@ -163,8 +163,7 @@ void SceneModifierCompte::getInputs()
 		if (event.type == Event::KeyPressed && textboxActif == nullptr)
 		{
 			isRunning = false;
-			sceneActive = Controleur::getInstance()->requeteChangementScene();
-			transitionVersScene = sceneActive;
+			transitionVersScene = Controleur::getInstance()->requeteChangementScene();
 		}
 
 		if (event.type == Event::KeyPressed && textboxActif != nullptr)
@@ -176,15 +175,15 @@ void SceneModifierCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
+				if (!Controleur::getInstance()->requeteUserName(textboxNickName,textboxPassword) && Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
 				{
-					compteValide = true;
+					transitionVersScene = Scene::scenes::MODIFIER;
 				}
 
 				else
 				{
-					//On affiche notre erreur.
-					textboxErreur.insererTexte("Mauvais nickname ou mot de passe entrez-en un bon!");
+					compteValide = true;
+					Controleur::getInstance()->requeteModifCompte(textboxNickName, textboxPassword, textboxName, textboxFirstName, textboxEmail);
 				}
 
 			}
@@ -222,7 +221,7 @@ void SceneModifierCompte::draw()
 	mainWin->draw(instruction);
 	mainWin->draw(nickname);
 	mainWin->draw(password);
-	if (Controleur::getInstance()->requeteUserName(textboxNickName,textboxPassword))
+	if (compteValide)
 	{
 		mainWin->draw(name);
 		mainWin->draw(firstname);

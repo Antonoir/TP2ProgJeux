@@ -65,8 +65,7 @@ void SceneGestionCompte::getInputs()
 		if (event.type == Event::KeyPressed)
 		{
 				isRunning = false;
-				sceneActive = Controleur::getInstance()->requeteChangementScene();
-				transitionVersScene = sceneActive;	
+				transitionVersScene = Controleur::getInstance()->requeteChangementScene();
 		}
 	}
 }

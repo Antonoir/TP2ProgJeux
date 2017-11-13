@@ -13,7 +13,7 @@ SpaceInvaders::~SpaceInvaders()
 
 void SpaceInvaders::Update()
 {
-	if (this->GetPosition().x >= 0 && this->GetPosition().x <= 1280)
+	if (this->GetPosition().x >= 0 && this->GetPosition().x <= 1280-32)
 	{
 			MoveLeft();
 			if (this->GetPosition().x == 0)

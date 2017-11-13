@@ -10,8 +10,10 @@ namespace platformer
 		static Controleur *getInstance();
 		static void release();
 		Scene::scenes requeteChangementScene();
+		void requeteModifCompte(Textbox username, Textbox password, Textbox name, Textbox firstname, Textbox email);
 		bool requeteUserName(Textbox username, Textbox password);
 		bool requeteNickNameCompte(Textbox nickname);
+		void requeteSupprimerCompte(Textbox username, Textbox password);
 		bool requetePasswordCompte(Textbox password);
 		bool requeteNameCompte(Textbox name);
 		bool requeteEmailCompte(Textbox email);

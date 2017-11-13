@@ -116,14 +116,17 @@ void SceneEffacerCompte::getInputs()
 			{
 				enterActif = true; //Pour s'assurer que enter n'est pas saisie comme caractère
 				isRunning = false;
-				if (Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
+				if (Controleur::getInstance()->requeteUserName(textboxNickName,textboxPassword) && Controleur::getInstance()->requeteNickNameCompte(textboxNickName) && Controleur::getInstance()->requetePasswordCompte(textboxPassword))
 				{
 					infoValide = true;
+					Controleur::getInstance()->requeteSupprimerCompte(textboxNickName, textboxPassword);
+					transitionVersScene = Scene::scenes::MENUPRINCIPALE;
 				}
 
 				else
 				{
 					//On affiche notre erreur.
+					transitionVersScene = Scene::scenes::MENUPRINCIPALE;
 					textboxErreur.insererTexte("Mauvais nickname ou mot de passe entrez-en un bon!");
 				}
 

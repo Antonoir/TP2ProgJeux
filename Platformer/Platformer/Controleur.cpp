@@ -29,6 +29,7 @@ namespace platformer
 
 	Scene::scenes Controleur::requeteChangementScene()
 	{
+		
 		if (Keyboard::isKeyPressed(Keyboard::A))
 		{
 			return Scene::scenes::TITRE;
@@ -58,7 +59,52 @@ namespace platformer
 			return Scene::scenes::MODIFIER;
 		}
 	}
-	
+	void Controleur::requeteSupprimerCompte(Textbox username, Textbox password)
+	{
+		std::ifstream user("Assets\\Account\\User.txt");
+		if (!user.is_open())
+		{
+			//on fait rien
+		}
+		std::string line;
+		while (std::getline(user, line))
+		{
+			std::string usernamestr;
+			std::string passwordstr;
+			std::string namestr;
+			std::string firstnamestr;
+			std::string emailstr;
+			std::stringstream elem(line);
+			if (username.getTexte() == usernamestr && password.getTexte() == passwordstr)
+			{
+				line.erase();
+			}
+		}
+	}
+	void Controleur::requeteModifCompte(Textbox username,Textbox password, Textbox name, Textbox firstname, Textbox email)
+	{
+		std::ifstream user("Assets\\Account\\User.txt");
+		if (!user.is_open())
+		{
+			//on fait rien
+		}
+		std::string line;
+		while (std::getline(user, line))
+		{
+			std::string usernamestr;
+			std::string passwordstr;
+			std::string namestr;
+			std::string firstnamestr;
+			std::string emailstr;
+			std::stringstream elem(line);
+			if (username.getTexte() == usernamestr && password.getTexte() == passwordstr)
+			{
+				name.insererTexte(namestr);
+				firstname.insererTexte(firstnamestr);
+				email.insererTexte(emailstr);
+			}
+		}
+	}
 	bool Controleur::requeteUserName(Textbox username,Textbox password)
 	{
 		std::ifstream user("Assets\\Account\\User.txt");
